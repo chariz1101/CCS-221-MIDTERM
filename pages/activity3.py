@@ -30,7 +30,7 @@ def rotation(images, degree):
    
     images = Image.open(images)
     images = np.asarray(images)
-    cols, rows = img_.shape[:2] 
+    cols, rows = images.shape[:2] 
     rotated_image = cv2.warpPerspective(images, m_rotation_, (int(cols), int(rows)))
     plt.axis('off')
     plt.imshow(rotated_image)
