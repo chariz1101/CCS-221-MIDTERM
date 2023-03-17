@@ -54,13 +54,14 @@ def scaling(images,scalex,scaley):
     
 def shear(images,x, y):
     m_shearing_ = np.float32([[1, x, 0],
-                               [y, 1, 0]])
+                               [y, 1, 0],
+                               [0, 0, 1]])
     
     
     images = Image.open(images)
     images = np.asarray(images)
     cols, rows = images.shape[:2]
-    sheared_image = cv2.warpPerspective(images,m_shearing_,(int(cols*1.5), int(rows*1.5)))
+    sheared_image = cv2.warpPerspective(images, m_shearing_,(int(cols*1.5), int(rows*1.5)))
     plt.axis('off')
     plt.imshow(sheared_image)
     plt.show()
