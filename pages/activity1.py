@@ -128,7 +128,6 @@ def main():
     st.title("This is Activity 1")
     option = st.sidebar.selectbox('What Type of Line to Perform?', ('DDA Line', 'Bresenham', 'Midpoint'))
     st.write('The type of line you chose is:', option)
-
     if option == "DDALine":
         DDALine(x, y, xEnd, yEnd, color)
 
@@ -137,9 +136,8 @@ def main():
 
     if option == "midpoint":
         midpoint(x,y,xEnd, yEnd, color)
-        
-        
-        
+
+
 
     x = st.sidebar.slider(
         'X1',
