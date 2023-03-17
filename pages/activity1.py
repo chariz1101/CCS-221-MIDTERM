@@ -137,6 +137,9 @@ def main():
 
     if option == "midpoint":
         midpoint(x,y,xEnd, yEnd, color)
+        
+        
+        
 
     x = st.sidebar.slider(
         'X1',
