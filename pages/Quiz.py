@@ -58,22 +58,22 @@ def main () :
     
     Bx_old = st.sidebar.slider(
         'Initial X',
-        0, 1000)
+        0, 100)
 
 
     By_old = st.sidebar.slider(
         'Initial Y',
-        0, 1000)
+        0, 100)
 
 
     Tx = st.sidebar.slider(
         'Added X',
-        0, 1000)
+        0, 100)
 
 
     Ty = st.sidebar.slider(
         'Added Y',
-        0, 1000)
+        0, 100)
 
 
     Bx_new = Bx_old + Tx
