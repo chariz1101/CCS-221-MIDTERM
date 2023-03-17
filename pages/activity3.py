@@ -100,7 +100,7 @@ def reflection(images):
 
 def main():
     st.title ("This is Activity 3: Image Manipulation Methods ")
-    filesUpload = st.sidebar.file_uploader('Upload your files here', ['png', 'jpg', 'webp'], False)
+    filesUpload = st.sidebar.file_uploader('Upload image to manipulate: ', ['png', 'jpg', 'webp'], False)
     option = st.sidebar.selectbox('What Image Manipulation Method to perform?', ('Translation', 'Rotation', 'Scaling', 'Shearing', 'Reflection'))
     st.write('The image manipulation you chose is:', option)
     
