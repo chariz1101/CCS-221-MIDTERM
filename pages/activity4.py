@@ -353,7 +353,7 @@ def main():
     
     
     if option == "Cube":
-        choice = st.sidebar.selectbox('What form of manipulation will you use?', ('Translation', 'Rotation', 'Scaling', 'Shearing'))
+        choice = st.sidebar.selectbox('What form of manipulation will you use?', ('Translation', 'Rotation', 'Scaling', 'Shearing', 'Reflection'))
         st.write('The method you chose is:', choice)
         
         _cube_(bottom_lower=(0, 0, 0), side_length=3)
@@ -382,11 +382,22 @@ def main():
             if option == "Shear X":
                     st.subheader ('Sheared Cube: ')
                     shear_x(points)
+                    
+        if choice == "Reflection":
+            option = st.sidebar.selectbox('Type of Reflection', ('Reflection X', 'Reflection Y'))
+            
+            if option == "Reflection Y:":
+                    st.subheader ('Reflected Cube: ')
+                    shear_y(points)
+                    
+            if option == "Reflection X":
+                    st.subheader ('Reflected Cube: ')
+                    shear_x(points)
         
     
     
     if option == "Pyramid":
-        choice = st.sidebar.selectbox('What form of manipulation will you use?', ('Translation', 'Rotation', 'Scaling', 'Shearing'))
+        choice = st.sidebar.selectbox('What form of manipulation will you use?', ('Translation', 'Rotation', 'Scaling', 'Shearing', 'Reflection'))
         st.write('The method you chose is:', choice)
         
         _pyramid_(side_length=1)
@@ -415,11 +426,23 @@ def main():
             if option == "Shear X":
                     st.subheader ('Sheared Pyramid: ')
                     shear_x(points)
+                    
+        if choice == "Reflection":
+            option = st.sidebar.selectbox('Type of Reflection', ('Reflection X', 'Reflection Y'))
+            
+            if option == "Reflection Y:":
+                    st.subheader ('Reflected Pyramid: ')
+                    shear_y(points)
+                    
+            if option == "Reflection X":
+                    st.subheader ('Reflected Pyramid: ')
+                    shear_x(points)
+        
         
     
     
     if option == "Rectangle":
-        choice = st.sidebar.selectbox('What form of manipulation will you use?', ('Translation', 'Rotation', 'Scaling', 'Shearing'))
+        choice = st.sidebar.selectbox('What form of manipulation will you use?', ('Translation', 'Rotation', 'Scaling', 'Shearing', 'Reflection'))
         st.write('The method you chose is:', choice)
         
         _rectangle_(side_length=3)
@@ -449,10 +472,21 @@ def main():
                     st.subheader ('Sheared Rectangle: ')
                     shear_x(points)
 
+        if choice == "Reflection":
+            option = st.sidebar.selectbox('Type of Reflection', ('Reflection X', 'Reflection Y'))
+            
+            if option == "Reflection Y:":
+                    st.subheader ('Reflected Rectangle: ')
+                    shear_y(points)
+                    
+            if option == "Reflection X":
+                    st.subheader ('Reflected Rectangle: ')
+                    shear_x(points)
+        
 
 
     if option == "Diamond":
-        choice = st.sidebar.selectbox('What form of manipulation will you use?', ('Translation', 'Rotation', 'Scaling', 'Shearing'))
+        choice = st.sidebar.selectbox('What form of manipulation will you use?', ('Translation', 'Rotation', 'Scaling', 'Shearing', 'Reflection'))
         st.write('The method you chose is:', choice)
         
         _diamond_(side_length=1)
@@ -481,7 +515,18 @@ def main():
             if option == "Shear X":
                     st.subheader ('Sheared Dianond: ')
                     shear_x(points)
+        
+        if choice == "Reflection":
+            option = st.sidebar.selectbox('Type of Reflection', ('Reflection X', 'Reflection Y'))
+            
+            if option == "Reflection Y:":
+                    st.subheader ('Reflected Diamond: ')
+                    shear_y(points)
                     
+            if option == "Reflection X":
+                    st.subheader ('Reflected Diamond: ')
+                    shear_x(points)
+                
                     
                     
                     
