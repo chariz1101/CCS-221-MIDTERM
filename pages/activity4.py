@@ -328,9 +328,9 @@ def reflect_y(points):
         return reflect_object
     
     with tf.compat.v1.Session() as session:
-        rx = st.sidebar.slider('X', -5, 5, 1)
+        ry = st.sidebar.slider('Y', -5, 5, 1)
         rz = st.sidebar.slider('Z', -5, 5, -1)
-        reflect_object_y = session.run(reflect_y_object(points, rx, rz))
+        reflect_object_y = session.run(reflect_y_object(points, ry, rz))
     
     _plt_basic_object(reflect_object_y)
 
