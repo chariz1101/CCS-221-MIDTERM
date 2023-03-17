@@ -77,7 +77,7 @@ def load_images (images):
 
 def main():
     st.title ("This is Activity 3: Multiple Image Manipulation")
-    images = st.sidebar.file_uploader('Upload your files here', ['png', 'jpg', 'webp'], True)
+    images = st.sidebar.file_uploader('Upload your files here', ['png', 'jpg', 'webp'], False)
     option = st.sidebar.selectbox('What Image Manipulation Method to perform?', ('Translation', 'Rotation', 'Scaling', 'Shearing', 'Reflection'))
     st.write('The image manipulation you chose is:', option)
     if option == "Translation":
