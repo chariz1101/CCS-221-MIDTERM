@@ -142,7 +142,7 @@ def main():
     st.write('Value of Y2: ', yEnd)
     color = "b."        
     
-    if option == "DDALine":
+    if option == "DDA Line":
         DDALine(x, y, xEnd, yEnd, color)
 
     if option == "bresenham":
