@@ -301,6 +301,8 @@ def main():
     option = st.sidebar.selectbox('What shape would you like to manipulate?', ('Cube', 'Pyramid', 'Rectangle', 'Diamond'))
     st.write('The shape you chose is:', option)
     
+    
+    
     if option == "Cube":
         choice = st.sidebar.selectbox('What form of manipulation will you use?', ('Translation', 'Rotation', 'Scaling', 'Shearing'))
         st.write('The shape you chose is:', choice)
@@ -365,6 +367,75 @@ def main():
                     st.subheader ('Sheared Pyramid: ')
                     shear_x(points)
         
+    
+    
+    if option == "Rectangle":
+        choice = st.sidebar.selectbox('What form of manipulation will you use?', ('Translation', 'Rotation', 'Scaling', 'Shearing'))
+        st.write('The shape you chose is:', choice)
+        
+        _rectangle_(side_length=3)
+        init_pyramid_ = _rectangle_(side_length=3)
+        points = tf.constant(init_rectangle_, dtype=tf.float32)
+            
+        if choice == "Translation":
+            st.subheader ('Translated Rectangle: ')
+            translate(points)
+                
+        if choice == "Rotation":
+            st.subheader ('Rotated Rectangle: ')
+            rotate(option, points)
+
+        if choice == "Scaling":
+            st.subheader ('Scaled Rectangle: ')
+            scale(points)
+
+        if choice == "Shearing":
+            option = st.sidebar.selectbox('Type of Shear', ('Shear X', 'Shear Y'))
+            
+            if option == "Shear Y":
+                    st.subheader ('Sheared Rectangle: ')
+                    shear_y(points)
+                    
+            if option == "Shear X":
+                    st.subheader ('Sheared Rectangle: ')
+                    shear_x(points)
+
+
+
+    if option == "Diamond":
+        choice = st.sidebar.selectbox('What form of manipulation will you use?', ('Translation', 'Rotation', 'Scaling', 'Shearing'))
+        st.write('The shape you chose is:', choice)
+        
+        _diamond_(side_length=1)
+        init_pyramid_ = _diamond_(side_length=1)
+        points = tf.constant(init_diamond_, dtype=tf.float32)
+            
+        if choice == "Translation":
+            st.subheader ('Translated Diamond: ')
+            translate(points)
+                
+        if choice == "Rotation":
+            st.subheader ('Rotated Diamond: ')
+            rotate(option, points)
+
+        if choice == "Scaling":
+            st.subheader ('Scaled Diamond: ')
+            scale(points)
+
+        if choice == "Shearing":
+            option = st.sidebar.selectbox('Type of Shear', ('Shear X', 'Shear Y'))
+            
+            if option == "Shear Y":
+                    st.subheader ('Sheared Diamond: ')
+                    shear_y(points)
+                    
+            if option == "Shear X":
+                    st.subheader ('Sheared Dianond: ')
+                    shear_x(points)
+                    
+                    
+                    
+                    
 
 if __name__ == '__main__':
     main()
