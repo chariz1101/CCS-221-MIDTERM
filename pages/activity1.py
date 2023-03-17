@@ -132,11 +132,12 @@ def main():
     if option == "DDALine":
         DDALine(x, y, xEnd, yEnd, color)
 
-    elif option == "bresenham":
+    if option == "bresenham":
         bresenham(x, y,xEnd, yEnd, color) # call for Bresenham's Line function
 
-    elif option == "midpoint":
+    if option == "midpoint":
         midpoint(x, y, xEnd, yEnd, color)
+        plt.show()      
          
     x = st.sidebar.slider('X1', 1, 1000)
     st.write('Value of X1: ', x)
