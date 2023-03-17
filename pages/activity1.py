@@ -126,6 +126,20 @@ def midpoint(x1, y1, x2, y2, color):
 
 def main(): 
     st.title("This is Activity 1")
+
+    x = st.sidebar.slider('X1', 1, 1000)
+    st.write('Value of X1: ', x)
+
+    y = st.sidebar.slider('Y1', 1, 1000)
+    st.write('Value of Y1: ', y)
+
+    xEnd = st.sidebar.slider('X2',0, 1000)
+    st.write('Value of X2: ', xEnd)
+
+    yEnd = st.sidebar.slider('Y2', 0, 1000)
+    st.write('Value of Y2: ', yEnd)
+    color = "b." 
+    
     option = st.sidebar.selectbox('What Type of Line to Perform?', ('DDA Line', 'Bresenham', 'Midpoint'))
     st.write('The type of line you chose is:', option)
 
@@ -139,19 +153,7 @@ def main():
         midpoint(x, y, xEnd, yEnd, color)
         plt.show()      
          
-    x = st.sidebar.slider('X1', 1, 1000)
-    st.write('Value of X1: ', x)
-
-    y = st.sidebar.slider('Y1', 1, 1000)
-    st.write('Value of Y1: ', y)
-
-    xEnd = st.sidebar.slider('X2',0, 1000)
-    st.write('Value of X2: ', xEnd)
-
-    yEnd = st.sidebar.slider('Y2', 0, 1000)
-    st.write('Value of Y2: ', yEnd)
-    color = "b." 
-
+    
 
 if __name__ == '__main__':
     main()    
