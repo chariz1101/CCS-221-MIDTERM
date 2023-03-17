@@ -98,19 +98,9 @@ def reflection(images):
     plt.show()
     st.pyplot(fig)
 
-def image_load():
-   
-    images, address = [], []
-    c = int(input('Enter number of files: '))
-    for i in range(c):
-        address.append(input(f'Enter image path {i + 1}/{c} : '))
-    for path in address:
-        images.append(cv2.cvtColor(cv2.imread(path), cv2.COLOR_BGR2RGB))
-    return images
-
 def main():
     st.title ("This is Activity 3: Multiple Image Manipulation")
-    filesUpload = st.sidebar.file_uploader('Upload your files here', ['png', 'jpg', 'webp'], True)
+    filesUpload = st.sidebar.file_uploader('Upload your files here', ['png', 'jpg', 'webp'], False)
     option = st.sidebar.selectbox('What Image Manipulation Method to perform?', ('Translation', 'Rotation', 'Scaling', 'Shearing', 'Reflection'))
     st.write('The image manipulation you chose is:', option)
     if option == "Translation":
@@ -139,7 +129,6 @@ def main():
     if option == "Reflection":
         st.write("Reflection")
         reflection(filesUpload)
-        
-    images = image_load()
+
 if __name__ == '__main__':
     main()
