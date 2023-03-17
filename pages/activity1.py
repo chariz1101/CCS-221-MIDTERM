@@ -128,7 +128,16 @@ def main():
     st.title("This is Activity 1")
     option = st.sidebar.selectbox('What Type of Line to Perform?', ('DDA Line', 'Bresenham', 'Midpoint'))
     st.write('The type of line you chose is:', option)
-    
+
+    if option == "DDALine":
+        DDALine(x, y, xEnd, yEnd, color)
+
+    elif option == "bresenham":
+        bresenham(x, y,xEnd, yEnd, color) # call for Bresenham's Line function
+
+    elif option == "midpoint":
+        midpoint(x, y, xEnd, yEnd, color)
+         
     x = st.sidebar.slider('X1', 1, 1000)
     st.write('Value of X1: ', x)
 
@@ -142,14 +151,6 @@ def main():
     st.write('Value of Y2: ', yEnd)
     color = "b." 
 
-    if option == "DDALine":
-        DDALine(x, y, xEnd, yEnd, color)
-
-    if option == "bresenham":
-        bresenham(x,y,xEnd, yEnd, color) # call for Bresenham's Line function
-
-    if option == "midpoint":
-        midpoint(x,y,xEnd, yEnd, color)
 
 if __name__ == '__main__':
     main()    
