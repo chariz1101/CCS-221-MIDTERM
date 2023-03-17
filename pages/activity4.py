@@ -241,12 +241,10 @@ def main():
             option = st.sidebar.selectbox('Type of Shear', ('Horizontal', 'Vertical'))
             
             if option == "Vertical":
-                    translate(points)
                     st.subheader ('Sheared Cube: ')
                     shear_y(points)
                     
             if option == "Horizontal":
-                    translate(points)
                     st.subheader ('Sheared Cube: ')
                     shear_x(points)
         
