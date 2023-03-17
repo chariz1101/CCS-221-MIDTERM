@@ -138,7 +138,7 @@ def main():
     if option == "midpoint":
         midpoint(x,y,xEnd, yEnd, color)
 
-     x = st.sidebar.slider(
+    x = st.sidebar.slider(
         'X1',
         1, 1000)
     st.write('Value of X1: ', x)
