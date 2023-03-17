@@ -12,6 +12,7 @@ st.title("This is Activity 4")
 tf.compat.v1.disable_eager_execution()
 
 option=[] 
+choice=[] 
 x=[]
 y=[]
 z=[]
@@ -141,20 +142,19 @@ def main():
     st.write('The shape you chose is:', option)
     
     if option == "Cube":
-        option = st.sidebar.selectbox('What form of manipulation will you use?', ('Translation', 'Rotation', 'Scaling', 'Shearing'))
-        st.write('The shape you chose is:', option)
+        choice = st.sidebar.selectbox('What form of manipulation will you use?', ('Translation', 'Rotation', 'Scaling', 'Shearing'))
+        st.write('The shape you chose is:', choice)
         
         _cube_(bottom_lower=(0, 0, 0), side_length=3)
         init_cube_ = _cube_(side_length=3)
         points = tf.constant(init_cube_, dtype=tf.float32)
             
-        if option == "Translation":
+        if choice == "Translation":
             st.subheader ('Translated Cube: ')
             translate(points)
-            
-            
-        if option == "Rotation":
-            st.subheader ('Cube rotated 75 Degrees: ')
+                
+        if choice == "Rotation":
+            st.subheader ('Rotated Cube: ')
             rotate(option, points)
    
 
