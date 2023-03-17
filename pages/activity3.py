@@ -12,7 +12,7 @@ def translation(images,x,y):
                                  [0, 0, 1]])
     
     
-    load_images()
+    load_images(images)
     translated_image = cv2.warpPerspective(images, m_translation_, (int(cols), int(rows)))
     plt.axis('off')
     plt.imshow(translated_image)
@@ -26,7 +26,7 @@ def rotation(images, angle):
                               [0, 0, 1]])
     
    
-    load_images() 
+    load_images(images) 
     rotated_image = cv2.warpPerspective(images, m_rotation_, (int(cols), int(rows)))
     plt.axis('off')
     plt.imshow(rotated_image)
@@ -51,7 +51,7 @@ def shear(images,x, y):
                                [y, 1, 0]])
     
     
-    load_images()
+    load_images(images)
     sheared_image = cv2.warpPerspective(images,m_shearing_,(int(cols*1.5), int(rows*1.5)))
     plt.axis('off')
     plt.imshow(sheared_image)
@@ -59,7 +59,7 @@ def shear(images,x, y):
     st.pyplot(fig)
 
 def reflection(images, flip):
-    load_images()
+    load_images(images)
     st.sidebar.write('Flip: ')    
     m_reflection_ = np.float32([[1, 0, 0],
                                 [0, flip, 0],
