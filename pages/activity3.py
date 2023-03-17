@@ -92,9 +92,9 @@ def reflection(images):
                                     [0, 0, 1]])
    
 
-    reflected_img_ = cv2.warpPerspective(img_, m_reflection_,(int(cols), int(rows)))
+    reflected_image = cv2.warpPerspective(image, m_reflection_,(int(cols), int(rows)))
     plt.axis('off')
-    plt.imshow(reflected_img_)
+    plt.imshow(reflected_image)
     plt.show()
     st.pyplot(fig)
 
