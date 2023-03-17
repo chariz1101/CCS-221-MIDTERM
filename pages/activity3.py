@@ -68,7 +68,9 @@ def shear(images,x, y):
     st.pyplot(fig)
 
 def reflection(images):
-    st.sidebar.write('Reflection: ')    
+    images = Image.open(images)
+    images = np.asarray(images)
+    cols, rows = images.shape[:2] 
     st.sidebar.write('Flip Option:')    
     choice = st.sidebar.selectbox('Image Position', ('Original', 'Vertical Flip', 'Horizontal Flip'))
     
@@ -88,15 +90,17 @@ def reflection(images):
         m_reflection_ = np.float32([[-1, 0, cols],
                                     [0, 1, 0],
                                     [0, 0, 1]])
-    images = Image.open(images)
-    images = np.asarray(images)
-    cols, rows = images.shape[:2]
+   
     reflected_image = cv2.warpPerspective(images, m_reflection_,(int(cols), int(rows)))
     plt.axis('off')
     plt.imshow(reflected_image)
     plt.show()
     st.pyplot(fig)
-    
+   reflected_img_ = cv2.warpPerspective(img_, m_reflection_,(int(cols), int(rows)))
+    plt.axis('off')
+    plt.imshow(reflected_img_)
+    plt.show()
+    st.pyplot(fig)
 
 def main():
     st.title ("This is Activity 3: Multiple Image Manipulation")
