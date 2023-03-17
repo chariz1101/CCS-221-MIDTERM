@@ -18,7 +18,7 @@ z=[]
 
 
 def _cube_(bottom_lower=(0, 0, 0), side_length=3):
-    """Create cube starting from the given bottom-lower point (lowest x, z, y values)"""
+    """Create cube starting from the given bottom-lower point (lowest x, y, z values)"""
     bottom_lower = np.array(bottom_lower)
     
     points = np.vstack([
@@ -82,7 +82,7 @@ def translate(points):
     y = st.sidebar.slider('Y Value', -5, 5, 0)
     z = st.sidebar.slider('Z Value', -5, 5, 0)
     
-    translation_amount = tf.constant([x, y, z], dtype=tf.float32)
+    translation_amount = tf.constant([x, z, y], dtype=tf.float32)
     translated_shape = translate_obj(points, translation_amount)
 
 
