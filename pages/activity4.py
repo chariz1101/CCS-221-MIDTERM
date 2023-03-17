@@ -430,7 +430,7 @@ def main():
         if choice == "Reflection":
             option = st.sidebar.selectbox('Type of Reflection', ('Reflection X', 'Reflection Y'))
             
-            if option == "Reflection Y:":
+            if option == "Reflection Y":
                     st.subheader ('Reflected Pyramid: ')
                     reflect_y(points)
                     
@@ -475,7 +475,7 @@ def main():
         if choice == "Reflection":
             option = st.sidebar.selectbox('Type of Reflection', ('Reflection X', 'Reflection Y'))
             
-            if option == "Reflection Y:":
+            if option == "Reflection Y":
                     st.subheader ('Reflected Rectangle: ')
                     reflect_y(points)
                     
@@ -519,7 +519,7 @@ def main():
         if choice == "Reflection":
             option = st.sidebar.selectbox('Type of Reflection', ('Reflection X', 'Reflection Y'))
             
-            if option == "Reflection Y:":
+            if option == "Reflection Y":
                     st.subheader ('Reflected Diamond: ')
                     reflect_y(points)
                     
