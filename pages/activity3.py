@@ -95,6 +95,7 @@ def main():
        translation(filesUpload, x, y)
         
     if option == "Rotation":
+        angle = st.sidebar.slider('Rotation Degrees', 0.0, 360.0, 0.1)
         st.write("Rotation")
         rotation(filesUpload, angle)
          
