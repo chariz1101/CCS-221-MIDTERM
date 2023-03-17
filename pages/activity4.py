@@ -74,8 +74,8 @@ init_cube_ = _cube_(side_length=3)
 
 
 
-def translate(points, x, y, z):
-    def translate_obj(points, x, y, z, amount):
+def translate(points):
+    def translate_obj(points, amount):
         return tf.add(points, amount)
 
 
@@ -97,19 +97,23 @@ def main():
     
     if option == "Cube":
         
-        _cube_(bottom_lower=(0, 0, 0), side_length=3)
-        init_cube_ = _cube_(side_length=3)
-        points = tf.constant(init_cube_, dtype=tf.float32)
+        
         
         option = st.selectbox('What form of manipulation will you use?', ('Translation', 'Rotation', 'Scaling', 'Shearing'))
         st.write('The shape you chose is:', option)
         
         if option == "Translation":
+            
             x = st.sidebar.slider('X Value', 0, 5)
             y = st.sidebar.slider('Y Value', 0, 5)
             z = st.sidebar.slider('Z Value', 0, 5)
+            
+            _cube_(bottom_lower=(0, 0, 0), side_length=3)
+            init_cube_ = _cube_(side_length=3)
+            points = tf.constant(init_cube_, dtype=tf.float32)
             st.subheader ('Translated Cube: ')
             translate(points, x, y, z)
+            
 
 if __name__ == '__main__':
     main()
