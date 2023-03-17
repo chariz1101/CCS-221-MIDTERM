@@ -77,35 +77,35 @@ def load_images (images):
 
 def main():
     st.title ("This is Activity 3: Multiple Image Manipulation")
-    images = st.sidebar.file_uploader('Upload your files here', ['png', 'jpg', 'webp'], False)
+    filesUpload = st.sidebar.file_uploader('Upload your files here', ['png', 'jpg', 'webp'], False)
     option = st.sidebar.selectbox('What Image Manipulation Method to perform?', ('Translation', 'Rotation', 'Scaling', 'Shearing', 'Reflection'))
     st.write('The image manipulation you chose is:', option)
     if option == "Translation":
        x = st.sidebar.slider('X Translation', 0.0, 100.0, 0.1)
        y = st.sidebar.slider('Y Translation', 0.0, 100.0, 0.1)
        st.write("Translation")
-       translation(images,x,y)
+       translation(filesUpload,x,y)
         
     if option == "Rotation":
         st.write("Rotation")
-        rotation(images, degree)
+        rotation(filesUpload, degree)
          
     if option == "Scaling":
         scalex = st.sidebar.slider('X Coordiante: ', 0.0, 100.0, 0.1)
         scaley = st.sidebar.slider('Y Coordinate: ', 0.0, 100.0, 0.1)
         st.write("Scale")
-        scaling(images, scalex, scaley)
+        scaling(filesUpload, scalex, scaley)
         
     if option == "Shearing":
         st.write("Shear")
         x = st.sidebar.slider('X Coordinate: ', 0.0, 100.0, 0.1)
         y = st.sidebar.slider('Y Coordinate: ', 0.0, 100.0, 0.1)
-        shear(images,x,y)
+        shear(filesUpload,x,y)
         
     if option == "Reflection":
         flip = st.sidebar.slider('X Translation', -1, 1, 1)
         st.write("Reflection")
-        reflection(images, flip)
+        reflection(filesUpload, flip)
     
 if __name__ == '__main__':
     main()
