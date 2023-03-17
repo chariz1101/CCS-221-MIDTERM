@@ -19,6 +19,13 @@ y=[]
 z=[]
 
 
+
+
+
+
+
+
+
 def _cube_(bottom_lower=(0, 0, 0), side_length=3):
     """Create cube starting from the given bottom-lower point (lowest x, y, z values)"""
     bottom_lower = np.array(bottom_lower)
@@ -38,6 +45,56 @@ def _cube_(bottom_lower=(0, 0, 0), side_length=3):
 
 
     return points
+
+
+
+def _pyramid_(side_length=1):
+
+    points = np.vstack([
+            ([[-1, -1, -1],
+                [side_length, -1, -1 ],
+                [side_length, side_length, -1],
+                [-1, side_length, -1],
+                [0, 0 , side_length]])
+    ])        
+         
+    return points
+
+
+
+def _rectangle_(bottom_lower=(0, 0, 0), side_length=2):
+    """Create cube starting from the given bottom-lower point (lowest x, y, z values)"""
+    bottom_lower = np.array(bottom_lower)
+    
+    points = np.vstack([
+        bottom_lower,
+        [side_length, 0, 0],
+        [side_length, 4, 0],
+        [0, 4, 0],
+        [0, 0, 3],
+        [side_length, 0, 3],
+        [side_length, 4, 3],
+        [0, 4, 3]
+    ])   
+    
+    return points
+
+
+
+def _diamond_(side_length=1):
+
+    points = np.vstack([
+                ([[-1, -1, -1],
+                [side_length, -1, -1 ],
+                [side_length, side_length, -1],
+                [-1, side_length, -1],
+                [0, 0 , side_length],
+                [0, 0, -3]
+                ])
+    ])        
+    
+    return points     
+
 
 
 
@@ -75,7 +132,18 @@ def _plt_basic_object(points):
     
     
     
+  
+  
+  
+    
+    
 init_cube_ = _cube_(side_length=3)
+init_pyramid_ = _pyramid_(side_length=1)
+init_rectangle_ = _rectangle_(side_length=3)
+init_diamond_ = _diamond_(side_length=1)
+
+
+
 
 
 
@@ -122,17 +190,21 @@ def rotate(option, points):
             rotated_object = session.run(rotate_obj(init_cube_, x)) 
             _plt_basic_object(rotated_object)
             
-        # if option == "Pyramid":
-        #     rotated_object = session.run(rotate_obj(init_pyramid_, 75)) 
-        #     _plt_basic_object(rotated_object)
+        if option == "Pyramid":
+            x = st.sidebar.slider('Angle', 0, 100, 0)
+            rotated_object = session.run(rotate_obj(init_pyramid_, x)) 
+            _plt_basic_object(rotated_object)
             
-        # if option == "Rectangle":
-        #     rotated_object = session.run(rotate_obj(init_rectangle_, 75)) 
-        #     _plt_basic_object(rotated_object)
+        if option == "Rectangle":
+            x = st.sidebar.slider('Angle', 0, 100, 0)
+            rotated_object = session.run(rotate_obj(init_rectangle_, x)) 
+            _plt_basic_object(rotated_object)
             
-        # if option == "Diamond":
-        #     rotated_object = session.run(rotate_obj(init_diamond_, 75)) 
-        #     _plt_basic_object(rotated_object)   
+        if option == "Diamond":
+            x = st.sidebar.slider('Angle', 0, 100, 0)
+            rotated_object = session.run(rotate_obj(init_diamond_, x)) 
+            _plt_basic_object(rotated_object)   
+
 
 
 
@@ -151,6 +223,8 @@ def scale(points):
          scaled_cube = session.run(scaled_object)
     
     _plt_basic_object(scaled_cube)
+
+
 
 
 
@@ -183,6 +257,8 @@ def shear_y(points):
     
     
  
+ 
+ 
 def shear_x(points):   
     
     def shear_obj_x(points, xold, xnew, zold, znew):
@@ -210,6 +286,14 @@ def shear_x(points):
     
     
     
+    
+    
+
+
+
+
+
+
     
             
 def main():
@@ -248,6 +332,38 @@ def main():
                     st.subheader ('Sheared Cube: ')
                     shear_x(points)
         
+    
+    
+    if option == "Pyramid":
+        choice = st.sidebar.selectbox('What form of manipulation will you use?', ('Translation', 'Rotation', 'Scaling', 'Shearing'))
+        st.write('The shape you chose is:', choice)
+        
+        _pyramid_(side_length=1)
+        init_pyramid_ = _pyramid_(side_length=1)
+        points = tf.constant(init_pyramid_, dtype=tf.float32)
+            
+        if choice == "Translation":
+            st.subheader ('Translated Pyramid: ')
+            translate(points)
+                
+        if choice == "Rotation":
+            st.subheader ('Rotated Pyramid: ')
+            rotate(option, points)
+
+        if choice == "Scaling":
+            st.subheader ('Scaled Pyramid: ')
+            scale(points)
+
+        if choice == "Shearing":
+            option = st.sidebar.selectbox('Type of Shear', ('Shear X', 'Shear Y'))
+            
+            if option == "Shear Y":
+                    st.subheader ('Sheared Pyramid: ')
+                    shear_y(points)
+                    
+            if option == "Shear X":
+                    st.subheader ('Sheared Pyramid: ')
+                    shear_x(points)
         
 
 if __name__ == '__main__':
