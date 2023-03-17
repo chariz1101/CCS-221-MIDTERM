@@ -319,7 +319,7 @@ def reflection(choice):
    
 
     reflect_object = tf.constant([x, z, y], dtype=tf.float32)
-    reflected_shape = reflect_object(choice)
+    reflected_shape = reflect_object()
 
 
     with tf.compat.v1.Session() as session:
