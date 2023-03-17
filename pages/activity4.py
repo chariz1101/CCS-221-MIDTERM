@@ -320,8 +320,8 @@ def reflect_y(points):
         
         reflect_points = tf.stack([
                                 [1, 0, 0],
-                                [0, ry, 0,],
-                                [0, 0, rz]
+                                [0, rz, 0,],
+                                [0, 0, ry]
                                 ])
         
         reflect_object = tf.matmul(tf.cast(points, tf.float32), tf.cast(reflect_points, tf.float32))
