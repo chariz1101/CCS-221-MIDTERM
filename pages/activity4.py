@@ -287,39 +287,40 @@ def shear_x(points):
 
 
 def reflection(choice):
+     def reflect_obj(choice):
     st.sidebar.write('Flip Option:')    
     choice = st.sidebar.selectbox('Object Reflection', ('Base Image', 'X Flip', 'Y Flip', 'Z Flip'))
     
     if choice == "Original":
-        m_reflection_ = np.float32([[1, 0, 0, 0],
+        m_reflection_ = tf.stack([[1, 0, 0, 0],
                                     [0, 1, 0, 0],
                                     [0, 0, -1, 1],
                                     [0, 0, 0, 1]])
         
         
     elif choice == "X Flip":
-        m_reflection_ = np.float32([[1, 0, 0, 0],
+        m_reflection_ = tf.stack([[1, 0, 0, 0],
                                     [0, 1, 0, 0],
                                     [0, 0, -1, 1],
                                     [0, 0, 0, 1]])
 
         
     elif choice == "Y Flip":
-        m_reflection_ = np.float32([[-1, 0, 0, 0],
+        m_reflection_ = tf.stack([[-1, 0, 0, 0],
                                     [0, 1, 0, 0],
                                     [0, 0, -1, 0],
                                     [0, 0, 0, 1]])
         
         
     elif choice == "Y Flip":
-        m_reflection_ = np.float32([[-1, 0, 0, 0],
+        m_reflection_ = tf.stack([[-1, 0, 0, 0],
                                     [0, -1, 0, 0],
                                     [0, 0, 1, 0],
                                     [0, 0, 0, 1]])
    
 
     reflect_object = tf.constant([x, z, y], dtype=tf.float32)
-    reflected_shape = reflect_object()
+    reflected_shape = reflect_obj(choice)
 
 
     with tf.compat.v1.Session() as session:
