@@ -135,6 +135,24 @@ def rotate(option, points):
 
 
 
+def scale(points):
+    def scale_obj(points, amount):
+        return tf.multiply(points, amount)
+
+    x = st.sidebar.slider('X Value', -5, 5, 0)
+    y = st.sidebar.slider('Y Value', -5, 5, 0)
+    z = st.sidebar.slider('Z Value', -5, 5, 0)
+
+    scale_amount = tf.constant([x,z,y], dtype=tf.float32)
+    scaled_object = scale_obj(points, scale_amount)
+
+    with tf.compat.v1.Session() as session:
+         scaled_cube = session.run(scaled_object)
+    
+    _plt_basic_object(scaled_cube)
+
+
+
             
 def main():
     
@@ -156,6 +174,10 @@ def main():
         if choice == "Rotation":
             st.subheader ('Rotated Cube: ')
             rotate(option, points)
+
+        if choice == "Scaling":
+            st.subheader ('Scaled Cube: ')
+            scale(points)
    
 
 if __name__ == '__main__':
