@@ -72,6 +72,8 @@ def reflection(images, flip):
     m_reflection_ = np.float32([[1, 0, 0],
                                 [0, flip, 0],
                                 [0, 0, 1]])
+    
+    
     images = Image.open(images)
     images = np.asarray(images)
     cols, rows = images.shape[:2]
