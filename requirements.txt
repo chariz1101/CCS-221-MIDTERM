@@ -3,5 +3,5 @@ numpy
 tensorflow
 opencv-python-headless
 streamlit
-PILLOW
+pillow
 scipy
