@@ -145,10 +145,10 @@ def main():
     if option == "DDA Line":
         DDALine(x, y, xEnd, yEnd, color)
 
-    if option == "bresenham":
+    if option == "Bresenham":
         bresenham(x, y,xEnd, yEnd, color) # call for Bresenham's Line function
 
-    if option == "midpoint":
+    if option == "Midpoint":
         midpoint(x, y, xEnd, yEnd, color)
 
 if __name__ == '__main__':
