@@ -13,6 +13,7 @@ def translation(images,x,y):
     
     
     load_images(images)
+    cols, rows = images.shape[:2]
     translated_image = cv2.warpPerspective(images, m_translation_, (int(cols), int(rows)))
     plt.axis('off')
     plt.imshow(translated_image)
@@ -27,6 +28,7 @@ def rotation(images, angle):
     
    
     load_images(images) 
+    cols, rows = images.shape[:2]
     rotated_image = cv2.warpPerspective(images, m_rotation_, (int(cols), int(rows)))
     plt.axis('off')
     plt.imshow(rotated_image)
@@ -40,6 +42,7 @@ def scaling(images,scalex,scaley):
     
    
     load_images()
+    cols, rows = images.shape[:2]
     scaled_image = cv2.warpPerspective(images, m_scaling_, (cols*2, rows*2))
     plt.axis('off')
     plt.imshow(scaled_image)
@@ -52,6 +55,7 @@ def shear(images,x, y):
     
     
     load_images(images)
+    cols, rows = images.shape[:2]
     sheared_image = cv2.warpPerspective(images,m_shearing_,(int(cols*1.5), int(rows*1.5)))
     plt.axis('off')
     plt.imshow(sheared_image)
@@ -63,7 +67,8 @@ def reflection(images, flip):
     st.sidebar.write('Flip: ')    
     m_reflection_ = np.float32([[1, 0, 0],
                                 [0, flip, 0],
-                                [0, 0, 1]])    
+                                [0, 0, 1]])
+    cols, rows = images.shape[:2]
     reflected_image = cv2.warpPerspective(images, m_reflection_,(int(cols), int(rows)))
     plt.axis('off')
     plt.imshow(reflected_image)
@@ -73,7 +78,6 @@ def reflection(images, flip):
 def load_images (images):
     images = Image.open(images)
     images = np.asarray(images)
-    cols, rows = images.shape[:2]
 
 def main():
     st.title ("This is Activity 3: Multiple Image Manipulation")
