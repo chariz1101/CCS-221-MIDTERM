@@ -388,11 +388,11 @@ def main():
             
             if option == "Reflection Y:":
                     st.subheader ('Reflected Cube: ')
-                    shear_y(points)
+                    reflect_y(points)
                     
             if option == "Reflection X":
                     st.subheader ('Reflected Cube: ')
-                    shear_x(points)
+                    reflect_x(points)
         
     
     
@@ -432,11 +432,11 @@ def main():
             
             if option == "Reflection Y:":
                     st.subheader ('Reflected Pyramid: ')
-                    shear_y(points)
+                    reflect_y(points)
                     
             if option == "Reflection X":
                     st.subheader ('Reflected Pyramid: ')
-                    shear_x(points)
+                    reflect_x(points)
         
         
     
@@ -477,11 +477,11 @@ def main():
             
             if option == "Reflection Y:":
                     st.subheader ('Reflected Rectangle: ')
-                    shear_y(points)
+                    reflect_y(points)
                     
             if option == "Reflection X":
                     st.subheader ('Reflected Rectangle: ')
-                    shear_x(points)
+                    reflect_x(points)
         
 
 
@@ -521,11 +521,11 @@ def main():
             
             if option == "Reflection Y:":
                     st.subheader ('Reflected Diamond: ')
-                    shear_y(points)
+                    reflect_y(points)
                     
             if option == "Reflection X":
                     st.subheader ('Reflected Diamond: ')
-                    shear_x(points)
+                    reflect_x(points)
                 
                     
                     
