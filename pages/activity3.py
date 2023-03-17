@@ -67,13 +67,28 @@ def shear(images,x, y):
     plt.show()
     st.pyplot(fig)
 
-def reflection(images, flip):
-    st.sidebar.write('Flip: ')    
-    m_reflection_ = np.float32([[1, 0, 0],
-                                [0, flip, 2],
-                                [0, 0, 1]])
+def reflection(images):
+    st.sidebar.write('Reflection: ')    
     
+     st.sidebar.write('Flip Option:')    
+    choice = st.sidebar.selectbox('Image Position', ('Original', 'Vertical Flip', 'Horizontal Flip'))
     
+    if choice == "Classic":
+        m_reflection_ = np.float32([[1, 0, 0],
+                                    [0, 1, 0],
+                                    [0, 0, 1]])
+        
+        
+    elif choice == "Vertical Flip":
+        m_reflection_ = np.float32([[1, 0, 0],
+                                    [0, -1, rows],
+                                    [0, 0, 1]])
+
+        
+    elif choice == "Horizontal Flip":
+        m_reflection_ = np.float32([[-1, 0, cols],
+                                    [0, 1, 0],
+                                    [0, 0, 1]])
     images = Image.open(images)
     images = np.asarray(images)
     cols, rows = images.shape[:2]
@@ -113,9 +128,8 @@ def main():
         shear(filesUpload,x,y)
         
     if option == "Reflection":
-        flip = st.sidebar.slider('X Translation', -1, 1, 1)
         st.write("Reflection")
-        reflection(filesUpload, flip)
+        reflection(filesUpload)
     
 if __name__ == '__main__':
     main()
