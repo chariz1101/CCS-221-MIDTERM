@@ -69,8 +69,7 @@ def shear(images,x, y):
 
 def reflection(images):
     st.sidebar.write('Reflection: ')    
-    
-     st.sidebar.write('Flip Option:')    
+    st.sidebar.write('Flip Option:')    
     choice = st.sidebar.selectbox('Image Position', ('Original', 'Vertical Flip', 'Horizontal Flip'))
     
     if choice == "Classic":
