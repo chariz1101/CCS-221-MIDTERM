@@ -107,7 +107,7 @@ def main():
        st.write("Translation")
        st.write("Base Image: ")
        fig = plt.figure()
-       plt.imshow(images)
+       plt.imshow(filesUpload)
        plt.axis('off')
        x = st.sidebar.slider('X Translation', 0.0, 50.0, 0.1)
        y = st.sidebar.slider('Y Translation', 0.0, 50.0, 0.1)
