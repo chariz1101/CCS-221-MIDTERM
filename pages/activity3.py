@@ -105,8 +105,8 @@ def main():
     st.write('The image manipulation you chose is:', option)
     
     if option == "Translation":
-       x = st.sidebar.slider('X Translation', 0.0, 50.0, 0.1)
-       y = st.sidebar.slider('Y Translation', 0.0, 50.0, 0.1)
+       x = st.sidebar.slider('X Translation', 0.0, 300.0, 0.1)
+       y = st.sidebar.slider('Y Translation', 0.0, 300.0, 0.1)
        translation(filesUpload, x, y)
         
     if option == "Rotation":
