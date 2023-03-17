@@ -126,31 +126,84 @@ def midpoint(x1, y1, x2, y2, color):
 
 def main(): 
     st.title("This is Activity 1")
+    option = st.sidebar.selectbox('What Type of Line to Perform?', ('DDA Line', 'Bresenham', 'Midpoint'))
+    st.write('The type of line you chose is:', option)
 
-    x = st.sidebar.slider(
+    if option == "DDALine":
+        x = st.sidebar.slider(
         'X1',
         1, 1000)
-    st.write('Value of X1: ', x)
+        st.write('Value of X1: ', x)
 
-    y = st.sidebar.slider(
+        y = st.sidebar.slider(
         'Y1',
         1, 1000)
-    st.write('Value of Y1: ', y)
+        st.write('Value of Y1: ', y)
 
-    xEnd = st.sidebar.slider(
+        xEnd = st.sidebar.slider(
         'X2',
         0, 1000)
-    st.write('Value of X2: ', xEnd)
+        st.write('Value of X2: ', xEnd)
 
-    yEnd = st.sidebar.slider(
+        yEnd = st.sidebar.slider(
         'Y2',
         0, 1000)
-    st.write('Value of Y2: ', yEnd)
-    color = "b." 
+        st.write('Value of Y2: ', yEnd)
+        color = "b." 
 
-    DDALine(x, y, xEnd, yEnd, color)
-    bresenham(x,y,xEnd, yEnd, color) # call for Bresenham's Line function
-    midpoint(x,y,xEnd, yEnd, color)
+        st.write("DDA Line")
+
+        DDALine(x, y, xEnd, yEnd, color)
+
+    if option == "bresenham":
+        x = st.sidebar.slider(
+        'X1',
+        1, 1000)
+        st.write('Value of X1: ', x)
+
+        y = st.sidebar.slider(
+        'Y1',
+        1, 1000)
+        st.write('Value of Y1: ', y)
+
+        xEnd = st.sidebar.slider(
+        'X2',
+        0, 1000)
+        st.write('Value of X2: ', xEnd)
+
+        yEnd = st.sidebar.slider(
+        'Y2',
+        0, 1000)
+        st.write('Value of Y2: ', yEnd)
+        color = "b." 
+
+        st.write("Bresenham Line")
+        bresenham(x,y,xEnd, yEnd, color) # call for Bresenham's Line function
+
+    if option == "midpoint":
+        x = st.sidebar.slider(
+        'X1',
+        1, 1000)
+        st.write('Value of X1: ', x)
+
+        y = st.sidebar.slider(
+        'Y1',
+        1, 1000)
+        st.write('Value of Y1: ', y)
+
+        xEnd = st.sidebar.slider(
+        'X2',
+        0, 1000)
+        st.write('Value of X2: ', xEnd)
+
+        yEnd = st.sidebar.slider(
+        'Y2',
+        0, 1000)
+        st.write('Value of Y2: ', yEnd)
+        color = "b." 
+
+        st.write("Midpoint")
+        midpoint(x,y,xEnd, yEnd, color)
 
 
 if __name__ == '__main__':
