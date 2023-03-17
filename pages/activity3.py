@@ -92,7 +92,7 @@ def reflection(images):
                                     [0, 0, 1]])
    
 
-    reflected_image = cv2.warpPerspective(image, m_reflection_,(int(cols), int(rows)))
+    reflected_image = cv2.warpPerspective(images, m_reflection_,(int(cols), int(rows)))
     plt.axis('off')
     plt.imshow(reflected_image)
     plt.show()
