@@ -6,7 +6,7 @@ from PIL import Image
 
 fig = plt.figure()
 
-def translation(images,x,y):
+def translation(images, x, y):
     m_translation_ = np.float32([[1, 0, x],
                                  [0, 1, y],
                                  [0, 0, 1]])
@@ -88,7 +88,7 @@ def main():
        x = st.sidebar.slider('X Translation', 0.0, 100.0, 0.1)
        y = st.sidebar.slider('Y Translation', 0.0, 100.0, 0.1)
        st.write("Translation")
-       translation(filesUpload,x,y)
+       translation(filesUpload, x, y)
         
     if option == "Rotation":
         st.write("Rotation")
