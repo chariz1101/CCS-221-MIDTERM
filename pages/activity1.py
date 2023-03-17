@@ -126,6 +126,8 @@ def midpoint(x1, y1, x2, y2, color):
 
 def main(): 
     st.title("This is Activity 1")
+    option = st.sidebar.selectbox('What Type of Line to Perform?', ('DDA Line', 'Bresenham', 'Midpoint'))
+    st.write('The type of line you chose is:', option)
 
     x = st.sidebar.slider('X1', 1, 1000)
     st.write('Value of X1: ', x)
@@ -138,11 +140,7 @@ def main():
 
     yEnd = st.sidebar.slider('Y2', 0, 1000)
     st.write('Value of Y2: ', yEnd)
-    color = "b."    
-         
-    option = st.sidebar.selectbox('What Type of Line to Perform?', ('DDA Line', 'Bresenham', 'Midpoint'))
-    st.write('The type of line you chose is:', option)
-    
+    color = "b."        
     
     if option == "DDALine":
         DDALine(x, y, xEnd, yEnd, color)
