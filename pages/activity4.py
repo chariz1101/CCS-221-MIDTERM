@@ -294,9 +294,9 @@ def reflect_x(points):
         # rz = tf.multiply(zold, znew)
         
         reflect_points = tf.stack([
-                                [rx, 0, 0],
+                                [rz, 0, 0],
                                 [0, 1, 0,],
-                                [0, 0, rz]
+                                [0, 0, rx]
                                 ])
         
         reflect_object = tf.matmul(tf.cast(points, tf.float32), tf.cast(reflect_points, tf.float32))
