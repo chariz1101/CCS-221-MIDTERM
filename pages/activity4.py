@@ -283,9 +283,10 @@ def shear_x(points):
         sheared_object_x = session.run(shear_obj_x(points, w, x, y, z))
     
     _plt_basic_object(sheared_object_x)
-    
-    
-  def reflection(choice):
+ 
+
+
+def reflection(choice):
     st.sidebar.write('Flip Option:')    
     choice = st.sidebar.selectbox('Object Reflection', ('Base Image', 'X Flip', 'Y Flip', 'Z Flip'))
     
