@@ -286,51 +286,6 @@ def shear_x(points):
  
 
 
-def reflection(choice):
-    def reflect_obj(choice):
-        st.sidebar.write('Flip Option:')    
-        choice = st.sidebar.selectbox('Object Reflection', ('Base Image', 'X Flip', 'Y Flip', 'Z Flip'))
-    
-        if choice == "Original":
-            m_reflection_ = tf.stack([[1, 0, 0, 0],
-                                       [0, 1, 0, 0],
-                                       [0, 0, -1, 1],
-                                       [0, 0, 0, 1]])
-        
-        
-        elif choice == "X Flip":
-            m_reflection_ = tf.stack([[1, 0, 0, 0],
-                                       [0, 1, 0, 0],
-                                       [0, 0, -1, 1],
-                                       [0, 0, 0, 1]])
-
-        
-        elif choice == "Y Flip":
-            m_reflection_ = tf.stack([[-1, 0, 0, 0],
-                                       [0, 1, 0, 0],
-                                       [0, 0, -1, 0],
-                                       [0, 0, 0, 1]])
-        
-        
-        elif choice == "Y Flip":
-            m_reflection_ = tf.stack([[-1, 0, 0, 0],
-                                       [0, -1, 0, 0],
-                                       [0, 0, 1, 0],
-                                       [0, 0, 0, 1]])
-   
-
-        reflect_object = tf.constant([x, z, y], dtype=tf.float32)
-        reflected_shape = reflect_obj(choice)
-
-
-    with tf.compat.v1.Session() as session:
-        reflected_shape = session.run(reflect_obj)
-    
-    _plt_basic_object(reflected_shape)  
-
-    
-    
-            
 def main():
     
     option = st.sidebar.selectbox('What shape would you like to manipulate?', ('Cube', 'Pyramid', 'Rectangle', 'Diamond'))
@@ -339,7 +294,7 @@ def main():
     
     
     if option == "Cube":
-        choice = st.sidebar.selectbox('What form of manipulation will you use?', ('Translation', 'Rotation', 'Scaling', 'Shearing', 'Reflection'))
+        choice = st.sidebar.selectbox('What form of manipulation will you use?', ('Translation', 'Rotation', 'Scaling', 'Shearing'))
         st.write('The method you chose is:', choice)
         
         _cube_(bottom_lower=(0, 0, 0), side_length=3)
@@ -369,10 +324,6 @@ def main():
                     st.subheader ('Sheared Cube: ')
                     shear_x(points)
                     
-        if choice == "Reflection":
-            st.subheader ('Reflected Cube: ')
-            reflection(choice)
-    
     
     if option == "Pyramid":
         choice = st.sidebar.selectbox('What form of manipulation will you use?', ('Translation', 'Rotation', 'Scaling', 'Shearing'))
@@ -405,10 +356,7 @@ def main():
                     st.subheader ('Sheared Pyramid: ')
                     shear_x(points)
                     
-        if choice == "Reflection":
-            st.subheader ('Reflected Cube: ')
-            reflection(choice)
-    
+ 
     
     if option == "Rectangle":
         choice = st.sidebar.selectbox('What form of manipulation will you use?', ('Translation', 'Rotation', 'Scaling', 'Shearing'))
@@ -441,10 +389,7 @@ def main():
                     st.subheader ('Sheared Rectangle: ')
                     shear_x(points)
                     
-        if choice == "Reflection":
-            st.subheader ('Reflected Cube: ')
-            reflection(choice)
-
+   
 
     if option == "Diamond":
         choice = st.sidebar.selectbox('What form of manipulation will you use?', ('Translation', 'Rotation', 'Scaling', 'Shearing'))
@@ -476,11 +421,7 @@ def main():
             if option == "Shear X":
                     st.subheader ('Sheared Dianond: ')
                     shear_x(points)
-        if choice == "Reflection":
-            st.subheader ('Reflected Cube: ')
-            reflection(choice)
-                    
-                    
+
                     
                     
 
