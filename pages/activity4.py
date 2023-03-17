@@ -95,11 +95,11 @@ def translate(points):
             
 def main():
     
-    option = st.selectbox('What shape would you like to manipulate?', ('Cube', 'Pyramid', 'Rectangle', 'Diamond'))
+    option = st.sidebar.selectbox('What shape would you like to manipulate?', ('Cube', 'Pyramid', 'Rectangle', 'Diamond'))
     st.write('The shape you chose is:', option)
     
     if option == "Cube":
-        option = st.selectbox('What form of manipulation will you use?', ('Translation', 'Rotation', 'Scaling', 'Shearing'))
+        option = st.sidebar.selectbox('What form of manipulation will you use?', ('Translation', 'Rotation', 'Scaling', 'Shearing'))
         st.write('The shape you chose is:', option)
         
         if option == "Translation":
