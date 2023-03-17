@@ -151,8 +151,7 @@ def main():
         bresenham(x, y,xEnd, yEnd, color) # call for Bresenham's Line function
 
     if option == "midpoint":
-        midpoint(x, y, xEnd, yEnd, color)
-        plt.show()      
+        midpoint(x, y, xEnd, yEnd, color)      
          
     
 
