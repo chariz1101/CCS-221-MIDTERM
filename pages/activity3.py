@@ -103,15 +103,10 @@ def main():
     filesUpload = st.sidebar.file_uploader('Upload your files here', ['png', 'jpg', 'webp'], False)
     option = st.sidebar.selectbox('What Image Manipulation Method to perform?', ('Translation', 'Rotation', 'Scaling', 'Shearing', 'Reflection'))
     st.write('The image manipulation you chose is:', option)
+    
     if option == "Translation":
-       st.write("Translation")
-       st.write("Base Image: ")
-       fig = plt.figure()
-       plt.imshow(filesUpload)
-       plt.axis('off')
        x = st.sidebar.slider('X Translation', 0.0, 50.0, 0.1)
        y = st.sidebar.slider('Y Translation', 0.0, 50.0, 0.1)
-       st.write("Translated Image: ")
        translation(filesUpload, x, y)
         
     if option == "Rotation":
