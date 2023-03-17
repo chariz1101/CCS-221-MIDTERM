@@ -106,7 +106,7 @@ def main():
         st.write("Shear")
         x = st.sidebar.slider('X Coordinate: ', 0.0, 100.0, 0.1)
         y = st.sidebar.slider('Y Coordinate: ', 0.0, 100.0, 0.1)
-       shear(file_upload,x,y)
+        shear(file_upload,x,y)
         
     if option == "Reflection":
         flip = st.sidebar.slider('X Translation', -1, 1, 1)
