@@ -90,26 +90,26 @@ def main():
     option = st.sidebar.selectbox('What Image Manipulation Method to perform?', ('Translation', 'Rotation', 'Scaling', 'Shearing', 'Reflection'))
     st.write('The image manipulation you chose is:', option)
     if option == "Translation":
-       x = st.sidebar.slider('X Translation', 0.0, 100.0, 0.1)
-       y = st.sidebar.slider('Y Translation', 0.0, 100.0, 0.1)
+       x = st.sidebar.slider('X Translation', 0.0, 20.0, 0.1)
+       y = st.sidebar.slider('Y Translation', 0.0, 20.0, 0.1)
        st.write("Translation")
        translation(filesUpload, x, y)
         
     if option == "Rotation":
-        angle = st.sidebar.slider('Rotation Degrees', 0.0, 360.0, 0.1)
+        angle = st.sidebar.slider('Rotation Degrees', -90.0, 90.0, 0.1)
         st.write("Rotation")
         rotation(filesUpload, angle)
          
     if option == "Scaling":
-        scalex = st.sidebar.slider('X Coordiante: ', 0.0, 100.0, 0.1)
-        scaley = st.sidebar.slider('Y Coordinate: ', 0.0, 100.0, 0.1)
+        scalex = st.sidebar.slider('X Coordiante: ', 0.0, 10.0, 0.1)
+        scaley = st.sidebar.slider('Y Coordinate: ', 0.0, 10.0, 0.1)
         st.write("Scale")
         scaling(filesUpload, scalex, scaley)
         
     if option == "Shearing":
         st.write("Shear")
-        x = st.sidebar.slider('X Coordinate: ', 0.0, 100.0, 0.1)
-        y = st.sidebar.slider('Y Coordinate: ', 0.0, 100.0, 0.1)
+        x = st.sidebar.slider('X Coordinate: ', 0.0, 10.0, 0.1)
+        y = st.sidebar.slider('Y Coordinate: ', 0.0, 10.0, 0.1)
         shear(filesUpload,x,y)
         
     if option == "Reflection":
