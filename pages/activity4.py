@@ -139,9 +139,9 @@ def scale(points):
     def scale_obj(points, amount):
         return tf.multiply(points, amount)
 
-    x = st.sidebar.slider('X Value', -5, 5, 0)
-    y = st.sidebar.slider('Y Value', -5, 5, 0)
-    z = st.sidebar.slider('Z Value', -5, 5, 0)
+    x = st.sidebar.slider('X Value', -5, 5, 1)
+    y = st.sidebar.slider('Y Value', -5, 5, 1)
+    z = st.sidebar.slider('Z Value', -5, 5, 1)
 
     scale_amount = tf.constant([x,z,y], dtype=tf.float32)
     scaled_object = scale_obj(points, scale_amount)
