@@ -283,9 +283,68 @@ def shear_x(points):
         sheared_object_x = session.run(shear_obj_x(points, w, x, y, z))
     
     _plt_basic_object(sheared_object_x)
- 
+    
+    
+    
+    
+def reflect_x(points):   
+    def reflect_x_object(points, rx, rz):
+        
+        # rx = tf.multiply(yold, ynew)
+        # rz = tf.multiply(zold, znew)
+        
+        reflect_points = tf.stack([
+                                [rx, 0, 0],
+                                [0, 1, 0,],
+                                [0, 0, rz]
+                                ])
+        
+        reflect_object = tf.matmul(tf.cast(points, tf.float32), tf.cast(reflect_points, tf.float32))
+        return reflect_object
+    
+    with tf.compat.v1.Session() as session:
+        rx = st.sidebar.slider('X', -5, 5, 1)
+        rz = st.sidebar.slider('Z', -5, 5, -1)
+        reflect_object_x = session.run(reflect_x_object(points, rx, rz))
+    
+    _plt_basic_object(reflect_object_x)
+    
 
 
+
+def reflect_y(points):   
+    def reflect_y_object(points, ry, rz):
+        
+        # rx = tf.multiply(yold, ynew)
+        # rz = tf.multiply(zold, znew)
+        
+        reflect_points = tf.stack([
+                                [1, 0, 0],
+                                [0, ry, 0,],
+                                [0, 0, rz]
+                                ])
+        
+        reflect_object = tf.matmul(tf.cast(points, tf.float32), tf.cast(reflect_points, tf.float32))
+        return reflect_object
+    
+    with tf.compat.v1.Session() as session:
+        rx = st.sidebar.slider('X', -5, 5, 1)
+        rz = st.sidebar.slider('Z', -5, 5, -1)
+        reflect_object_y = session.run(reflect_y_object(points, rx, rz))
+    
+    _plt_basic_object(reflect_object_y)
+
+
+
+
+
+
+
+
+
+
+    
+            
 def main():
     
     option = st.sidebar.selectbox('What shape would you like to manipulate?', ('Cube', 'Pyramid', 'Rectangle', 'Diamond'))
@@ -294,7 +353,7 @@ def main():
     
     
     if option == "Cube":
-        choice = st.sidebar.selectbox('What form of manipulation will you use?', ('Translation', 'Rotation', 'Scaling', 'Shearing'))
+        choice = st.sidebar.selectbox('What form of manipulation will you use?', ('Translation', 'Rotation', 'Scaling', 'Shearing', 'Reflection'))
         st.write('The method you chose is:', choice)
         
         _cube_(bottom_lower=(0, 0, 0), side_length=3)
@@ -324,9 +383,21 @@ def main():
                     st.subheader ('Sheared Cube: ')
                     shear_x(points)
                     
+        if choice == "Reflection":
+            option = st.sidebar.selectbox('Type of Reflection', ('Reflection X', 'Reflection Y'))
+            
+            if option == "Reflection Y:":
+                    st.subheader ('Reflected Cube: ')
+                    shear_y(points)
+                    
+            if option == "Reflection X":
+                    st.subheader ('Reflected Cube: ')
+                    shear_x(points)
+        
+    
     
     if option == "Pyramid":
-        choice = st.sidebar.selectbox('What form of manipulation will you use?', ('Translation', 'Rotation', 'Scaling', 'Shearing'))
+        choice = st.sidebar.selectbox('What form of manipulation will you use?', ('Translation', 'Rotation', 'Scaling', 'Shearing', 'Reflection'))
         st.write('The method you chose is:', choice)
         
         _pyramid_(side_length=1)
@@ -356,10 +427,22 @@ def main():
                     st.subheader ('Sheared Pyramid: ')
                     shear_x(points)
                     
- 
+        if choice == "Reflection":
+            option = st.sidebar.selectbox('Type of Reflection', ('Reflection X', 'Reflection Y'))
+            
+            if option == "Reflection Y:":
+                    st.subheader ('Reflected Pyramid: ')
+                    shear_y(points)
+                    
+            if option == "Reflection X":
+                    st.subheader ('Reflected Pyramid: ')
+                    shear_x(points)
+        
+        
+    
     
     if option == "Rectangle":
-        choice = st.sidebar.selectbox('What form of manipulation will you use?', ('Translation', 'Rotation', 'Scaling', 'Shearing'))
+        choice = st.sidebar.selectbox('What form of manipulation will you use?', ('Translation', 'Rotation', 'Scaling', 'Shearing', 'Reflection'))
         st.write('The method you chose is:', choice)
         
         _rectangle_(side_length=3)
@@ -388,11 +471,22 @@ def main():
             if option == "Shear X":
                     st.subheader ('Sheared Rectangle: ')
                     shear_x(points)
+
+        if choice == "Reflection":
+            option = st.sidebar.selectbox('Type of Reflection', ('Reflection X', 'Reflection Y'))
+            
+            if option == "Reflection Y:":
+                    st.subheader ('Reflected Rectangle: ')
+                    shear_y(points)
                     
-   
+            if option == "Reflection X":
+                    st.subheader ('Reflected Rectangle: ')
+                    shear_x(points)
+        
+
 
     if option == "Diamond":
-        choice = st.sidebar.selectbox('What form of manipulation will you use?', ('Translation', 'Rotation', 'Scaling', 'Shearing'))
+        choice = st.sidebar.selectbox('What form of manipulation will you use?', ('Translation', 'Rotation', 'Scaling', 'Shearing', 'Reflection'))
         st.write('The method you chose is:', choice)
         
         _diamond_(side_length=1)
@@ -421,7 +515,19 @@ def main():
             if option == "Shear X":
                     st.subheader ('Sheared Dianond: ')
                     shear_x(points)
-
+        
+        if choice == "Reflection":
+            option = st.sidebar.selectbox('Type of Reflection', ('Reflection X', 'Reflection Y'))
+            
+            if option == "Reflection Y:":
+                    st.subheader ('Reflected Diamond: ')
+                    shear_y(points)
+                    
+            if option == "Reflection X":
+                    st.subheader ('Reflected Diamond: ')
+                    shear_x(points)
+                
+                    
                     
                     
 
