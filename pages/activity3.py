@@ -4,7 +4,7 @@ import cv2
 import matplotlib.pyplot as plt
 from PIL import Image
 
-st.title("Activity 3")
+st.title("This is Activity 3: Multiple Image Manipulation")
 # Reading of Image
 fig = plt.figure()
 
@@ -121,7 +121,7 @@ def reflection(img_):
 def main():
     
     method = st.sidebar.multiselect('Choose Transformation Method', ['Translation', 'Rotation', 'Scale', 'Shear', 'Reflection'])
-    uploaded = st.file_uploader('Upload Image to Use', ['jpg'], accept_multiple_files=False)
+    uploaded = st.file_uploader('Upload Image to Use', ['jpg'], accept_multiple_files=True)
     st.sidebar.title('ACT 3 - Controls')
     
     if 'Translation' in method:
