@@ -287,7 +287,56 @@ def shear_x(points):
     
     
     
+def reflect_x(points):   
+    def reflect_x_object(points, rx, rz):
+        
+        # rx = tf.multiply(yold, ynew)
+        # rz = tf.multiply(zold, znew)
+        
+        reflect_points = tf.stack([
+                                [rx, 0, 0],
+                                [0, 1, 0,],
+                                [0, 0, rz]
+                                ])
+        
+        reflect_object = tf.matmul(tf.cast(points, tf.float32), tf.cast(reflect_points, tf.float32))
+        return reflect_object
     
+    with tf.compat.v1.Session() as session:
+        rx = st.sidebar.slider('X', -5, 5, 1)
+        rz = st.sidebar.slider('Z', -5, 5, -1)
+        reflect_object_x = session.run(reflect_x_object(points, rx, rz))
+    
+    _plt_basic_object(reflect_object_x)
+    
+
+
+
+def reflect_y(points):   
+    def reflect_y_object(points, ry, rz):
+        
+        # rx = tf.multiply(yold, ynew)
+        # rz = tf.multiply(zold, znew)
+        
+        reflect_points = tf.stack([
+                                [1, 0, 0],
+                                [0, ry, 0,],
+                                [0, 0, rz]
+                                ])
+        
+        reflect_object = tf.matmul(tf.cast(points, tf.float32), tf.cast(reflect_points, tf.float32))
+        return reflect_object
+    
+    with tf.compat.v1.Session() as session:
+        rx = st.sidebar.slider('X', -5, 5, 1)
+        rz = st.sidebar.slider('Z', -5, 5, -1)
+        reflect_object_y = session.run(reflect_y_object(points, rx, rz))
+    
+    _plt_basic_object(reflect_object_y)
+
+
+
+
 
 
 
