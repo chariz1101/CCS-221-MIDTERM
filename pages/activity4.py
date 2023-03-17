@@ -78,7 +78,10 @@ def translate(points):
     def translate_obj(points, amount):
         return tf.add(points, amount)
 
-
+    x = st.sidebar.slider('X Value', 0, 5)
+    y = st.sidebar.slider('Y Value', 0, 5)
+    z = st.sidebar.slider('Z Value', 0, 5)
+    
     translation_amount = tf.constant([x, y, z], dtype=tf.float32)
     translated_shape = translate_obj(points, translation_amount)
 
@@ -103,11 +106,7 @@ def main():
         st.write('The shape you chose is:', option)
         
         if option == "Translation":
-            
-            x = st.sidebar.slider('X Value', 0, 5)
-            y = st.sidebar.slider('Y Value', 0, 5)
-            z = st.sidebar.slider('Z Value', 0, 5)
-            
+                        
             _cube_(bottom_lower=(0, 0, 0), side_length=3)
             init_cube_ = _cube_(side_length=3)
             points = tf.constant(init_cube_, dtype=tf.float32)
