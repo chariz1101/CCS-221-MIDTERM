@@ -12,9 +12,7 @@ def translation(images,x,y):
                                  [0, 0, 1]])
     
     
-    images = Image.open(images)
-    images = np.asarray(images)
-    cols, rows = images.shape[:2] 
+    load_images()
     translated_image = cv2.warpPerspective(images, m_translation_, (int(cols), int(rows)))
     plt.axis('off')
     plt.imshow(translated_image)
@@ -28,9 +26,7 @@ def rotation(images, degree):
                               [0, 0, 1]])
     
    
-    images = Image.open(images)
-    images = np.asarray(images)
-    cols, rows = images.shape[:2] 
+    load_images() 
     rotated_image = cv2.warpPerspective(images, m_rotation_, (int(cols), int(rows)))
     plt.axis('off')
     plt.imshow(rotated_image)
@@ -43,9 +39,7 @@ def scaling(images,scalex,scaley):
                              [0, 0, 1]])
     
    
-    images = Image.open(images)
-    images = np.asarray(images)
-    cols, rows = images.shape[:2] 
+    load_images()
     scaled_image = cv2.warpPerspective(images, m_scaling_, (cols*2, rows*2))
     plt.axis('off')
     plt.imshow(scaled_image)
@@ -57,9 +51,7 @@ def shear(images,x, y):
                                [y, 1, 0]])
     
     
-    images = Image.open(images)
-    images = np.asarray(images)
-    cols, rows = images.shape[:2]
+    load_images()
     sheared_image = cv2.warpPerspective(images,m_shearing_,(int(cols*1.5), int(rows*1.5)))
     plt.axis('off')
     plt.imshow(sheared_image)
@@ -67,9 +59,7 @@ def shear(images,x, y):
     st.pyplot(fig)
 
 def reflection(images, flip):
-    images = Image.open(images)
-    images = np.asarray(images)
-    cols, rows = images.shape[:2]
+    load_images()
     st.sidebar.write('Flip: ')    
     m_reflection_ = np.float32([[1, 0, 0],
                                 [0, flip, 0],
@@ -79,7 +69,11 @@ def reflection(images, flip):
     plt.imshow(reflected_image)
     plt.show()
     st.pyplot(fig)
-
+    
+def load_images (images):
+    images = Image.open(images)
+    images = np.asarray(images)
+    cols, rows = images.shape[:2]
 
 def main():
     st.title ("This is Activity 3: Multiple Image Manipulation")
