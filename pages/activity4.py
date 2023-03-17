@@ -238,13 +238,13 @@ def main():
             scale(points)
 
         if choice == "Shearing":
-            option = st.sidebar.selectbox('Type of Shear', ('Horizontal', 'Vertical'))
+            option = st.sidebar.selectbox('Type of Shear', ('Shear X', 'Shear Y'))
             
-            if option == "Vertical":
+            if option == "Shear Y":
                     st.subheader ('Sheared Cube: ')
                     shear_y(points)
                     
-            if option == "Horizontal":
+            if option == "Shear X":
                     st.subheader ('Sheared Cube: ')
                     shear_x(points)
         
