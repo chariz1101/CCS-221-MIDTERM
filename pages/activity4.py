@@ -285,15 +285,48 @@ def shear_x(points):
     _plt_basic_object(sheared_object_x)
     
     
+  def reflection(choice):
+    st.sidebar.write('Flip Option:')    
+    choice = st.sidebar.selectbox('Object Reflection', ('Base Image', 'X Flip', 'Y Flip', 'Z Flip'))
     
+    if choice == "Original":
+        m_reflection_ = np.float32([[1, 0, 0, 0],
+                                    [0, 1, 0, 0],
+                                    [0, 0, -1, 1],
+                                    [0, 0, 0, 1]])
+        
+        
+    elif choice == "X Flip":
+        m_reflection_ = np.float32([[1, 0, 0, 0],
+                                    [0, 1, 0, 0],
+                                    [0, 0, -1, 1],
+                                    [0, 0, 0, 1]])
+
+        
+    elif choice == "Y Flip":
+        m_reflection_ = np.float32([[-1, 0, 0, 0],
+                                    [0, 1, 0, 0],
+                                    [0, 0, -1, 0],
+                                    [0, 0, 0, 1]])
+        
+        
+    elif choice == "Y Flip":
+        m_reflection_ = np.float32([[-1, 0, 0, 0],
+                                    [0, -1, 0, 0],
+                                    [0, 0, 1, 0],
+                                    [0, 0, 0, 1]])
+   
+
+    reflect_object = tf.constant([x, z, y], dtype=tf.float32)
+    reflected_shape = reflect_object(choice)
+
+
+    with tf.compat.v1.Session() as session:
+ 
+            reflected_shape = session.run(reflected_shape)
+            _plt_basic_object(reflected_shape)  
+
     
-    
-
-
-
-
-
-
     
             
 def main():
@@ -304,7 +337,7 @@ def main():
     
     
     if option == "Cube":
-        choice = st.sidebar.selectbox('What form of manipulation will you use?', ('Translation', 'Rotation', 'Scaling', 'Shearing'))
+        choice = st.sidebar.selectbox('What form of manipulation will you use?', ('Translation', 'Rotation', 'Scaling', 'Shearing', 'Reflection'))
         st.write('The method you chose is:', choice)
         
         _cube_(bottom_lower=(0, 0, 0), side_length=3)
@@ -333,7 +366,10 @@ def main():
             if option == "Shear X":
                     st.subheader ('Sheared Cube: ')
                     shear_x(points)
-        
+                    
+        if choice == "Reflection":
+            st.subheader ('Reflected Cube: ')
+            reflection(choice)
     
     
     if option == "Pyramid":
@@ -366,7 +402,10 @@ def main():
             if option == "Shear X":
                     st.subheader ('Sheared Pyramid: ')
                     shear_x(points)
-        
+                    
+        if choice == "Reflection":
+            st.subheader ('Reflected Cube: ')
+            reflection(choice)
     
     
     if option == "Rectangle":
@@ -399,7 +438,10 @@ def main():
             if option == "Shear X":
                     st.subheader ('Sheared Rectangle: ')
                     shear_x(points)
-
+                    
+        if choice == "Reflection":
+            st.subheader ('Reflected Cube: ')
+            reflection(choice)
 
 
     if option == "Diamond":
@@ -432,6 +474,9 @@ def main():
             if option == "Shear X":
                     st.subheader ('Sheared Dianond: ')
                     shear_x(points)
+        if choice == "Reflection":
+            st.subheader ('Reflected Cube: ')
+            reflection(choice)
                     
                     
                     
