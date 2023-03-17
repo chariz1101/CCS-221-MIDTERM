@@ -121,7 +121,7 @@ def reflection(img_):
 def main():
     
     method = st.sidebar.multiselect('Choose Transformation Method', ['Translation', 'Rotation', 'Scale', 'Shear', 'Reflection'])
-    uploaded = st.file_uploader('Upload Image to Use', ['jpg'], accept_multiple_files=True)
+    uploaded = st.file_uploader('Upload Image to Use', ['jpg'], accept_multiple_files=False)
     st.sidebar.title('ACT 3 - Controls')
     
     if 'Translation' in method:
