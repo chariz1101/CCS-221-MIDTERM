@@ -72,7 +72,7 @@ def reflection(images):
     images = np.asarray(images)
     cols, rows = images.shape[:2] 
     st.sidebar.write('Flip Option:')    
-    choice = st.sidebar.selectbox('Image Position', ('Original', 'Vertical Flip', 'Horizontal Flip'))
+    choice = st.sidebar.selectbox('Image Position', ('Classic', 'Vertical Flip', 'Horizontal Flip'))
     
     if choice == "Classic":
         m_reflection_ = np.float32([[1, 0, 0],
