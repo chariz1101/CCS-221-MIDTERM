@@ -112,7 +112,7 @@ def main():
             init_cube_ = _cube_(side_length=3)
             points = tf.constant(init_cube_, dtype=tf.float32)
             st.subheader ('Translated Cube: ')
-            translate(points, x, y, z)
+            translate(points)
             
 
 if __name__ == '__main__':
