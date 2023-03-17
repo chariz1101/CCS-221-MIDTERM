@@ -68,12 +68,12 @@ def main () :
 
     Tx = st.sidebar.slider(
         'Added X',
-        0, 100)
+        0, 500)
 
 
     Ty = st.sidebar.slider(
         'Added Y',
-        0, 100)
+        0, 500)
 
 
     Bx_new = Bx_old + Tx
