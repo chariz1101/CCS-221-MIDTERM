@@ -324,7 +324,7 @@ def reflection(choice):
 
 
     with tf.compat.v1.Session() as session:
-        reflected_shape = session.run(reflected_shape)
+        reflected_shape = session.run(reflected_obj)
     
     _plt_basic_object(reflected_shape)  
 
