@@ -172,10 +172,10 @@ def shear_y(points):
         return shear_object
     
     with tf.compat.v1.Session() as session:
-        w = st.sidebar.slider('Y Old', -5, 5, 1)
-        x = st.sidebar.slider('Y New', -5, 5, 1)
-        y = st.sidebar.slider('Z Old', -5, 5, 0)
-        z = st.sidebar.slider('Z New', -5, 5, 0)
+        w = st.sidebar.slider('Y Old', -5.0, 5.0, 1.0)
+        x = st.sidebar.slider('Y New', -5.0, 5.0, 1.0)
+        y = st.sidebar.slider('Z Old', -5.0, 5.0, 0.0)
+        z = st.sidebar.slider('Z New', -5.0, 5.0, 0.0)
         sheared_object_y = session.run(shear_obj_y(points, w, x, y, z))
     
     _plt_basic_object(sheared_object_y)
@@ -185,9 +185,9 @@ def shear_y(points):
  
 def shear_x(points):   
     
-    def shear_obj_x(points, yold, ynew, zold, znew):
+    def shear_obj_x(points, xold, xnew, zold, znew):
         
-        sh_x = tf.multiply(yold, ynew)
+        sh_x = tf.multiply(xold, xnew)
         sh_z = tf.multiply(zold, znew)
         
         shear_points = tf.stack([
@@ -200,10 +200,10 @@ def shear_x(points):
         return shear_object
     
     with tf.compat.v1.Session() as session:
-        w = st.sidebar.slider('Y Old', -5, 5, 0)
-        x = st.sidebar.slider('Y New', -5, 5, 0)
-        y = st.sidebar.slider('Z Old', -5, 5, 0)
-        z = st.sidebar.slider('Z New', -5, 5, 0)
+        w = st.sidebar.slider('X Old', -5.0, 5.0, 0.0)
+        x = st.sidebar.slider('X New', -5.0, 5.0, 0.0)
+        y = st.sidebar.slider('Z Old', -5.0, 5.0, 0.0)
+        z = st.sidebar.slider('Z New', -5.0, 5.0, 0.0)
         sheared_object_x = session.run(shear_obj_x(points, w, x, y, z))
     
     _plt_basic_object(sheared_object_x)
