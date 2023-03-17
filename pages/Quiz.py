@@ -80,9 +80,9 @@ def main () :
     By_new = By_old + Ty
     
     st.write('Original')
-    translation(images, Bx_old, By_old)
+    translation(filesUpload, Bx_old, By_old)
     st.write('Translated')
-    translation_new(images, Bx_new, By_new)
+    translation_new(filesUpload, Bx_new, By_new)
 
     
 if __name__ == '__main__':
