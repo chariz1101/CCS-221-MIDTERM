@@ -19,8 +19,8 @@ def translation(images,x,y):
     plt.show()
     st.pyplot(fig)
 
-def rotation(images, degree):
-    angle = np.radians(degree)
+def rotation(images, angle):
+    angle = np.radians(angle)
     m_rotation_ = np.float32([[np.cos(angle), -(np.sin(angle)), 0],
                               [np.sin(angle), np.cos(angle), 0],
                               [0, 0, 1]])
@@ -88,7 +88,7 @@ def main():
         
     if option == "Rotation":
         st.write("Rotation")
-        rotation(filesUpload, degree)
+        rotation(filesUpload, angle)
          
     if option == "Scaling":
         scalex = st.sidebar.slider('X Coordiante: ', 0.0, 100.0, 0.1)
