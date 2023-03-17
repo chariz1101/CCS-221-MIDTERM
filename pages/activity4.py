@@ -328,9 +328,9 @@ def reflect_y(points):
         return reflect_object
     
     with tf.compat.v1.Session() as session:
-        rx = st.sidebar.slider('X', -5, 5, 1)
+        ry = st.sidebar.slider('Y', -5, 5, 1)
         rz = st.sidebar.slider('Z', -5, 5, -1)
-        reflect_object_y = session.run(reflect_y_object(points, rx, rz))
+        reflect_object_y = session.run(reflect_y_object(points, ry, rz))
     
     _plt_basic_object(reflect_object_y)
 
@@ -388,11 +388,11 @@ def main():
             
             if option == "Reflection Y:":
                     st.subheader ('Reflected Cube: ')
-                    shear_y(points)
+                    reflect_y(points)
                     
             if option == "Reflection X":
                     st.subheader ('Reflected Cube: ')
-                    shear_x(points)
+                    reflect_x(points)
         
     
     
@@ -432,11 +432,11 @@ def main():
             
             if option == "Reflection Y:":
                     st.subheader ('Reflected Pyramid: ')
-                    shear_y(points)
+                    reflect_y(points)
                     
             if option == "Reflection X":
                     st.subheader ('Reflected Pyramid: ')
-                    shear_x(points)
+                    reflect_x(points)
         
         
     
@@ -477,11 +477,11 @@ def main():
             
             if option == "Reflection Y:":
                     st.subheader ('Reflected Rectangle: ')
-                    shear_y(points)
+                    reflect_y(points)
                     
             if option == "Reflection X":
                     st.subheader ('Reflected Rectangle: ')
-                    shear_x(points)
+                    reflect_x(points)
         
 
 
@@ -521,11 +521,11 @@ def main():
             
             if option == "Reflection Y:":
                     st.subheader ('Reflected Diamond: ')
-                    shear_y(points)
+                    reflect_y(points)
                     
             if option == "Reflection X":
                     st.subheader ('Reflected Diamond: ')
-                    shear_x(points)
+                    reflect_x(points)
                 
                     
                     
