@@ -25,7 +25,7 @@ def translation(images, Bx_old, By_old):
     images = np.asarray(images)
     cols, rows = images.shape[:2]
 
-    translated_image = cv2.warpPerspective(image, m_translation_, (cols, rows))
+    translated_image = cv2.warpPerspective(images, m_translation_, (cols, rows))
     plt.axis('off')
     plt.imshow(translated_image)
     plt.show()
@@ -44,7 +44,7 @@ def translation_new(images, Bx_new,By_new):
     images = np.asarray(images)
     cols, rows = images.shape[:2]
 
-    translated_image = cv2.warpPerspective(image, m_translation_, (cols, rows))
+    translated_image = cv2.warpPerspective(images, m_translation_, (cols, rows))
     plt.axis('off')
     plt.imshow(translated_image)
     plt.show()
