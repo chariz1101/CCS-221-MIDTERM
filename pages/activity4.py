@@ -12,7 +12,8 @@ st.title("This is Activity 4")
 tf.compat.v1.disable_eager_execution()
 
 option=[] 
-choice=[] 
+choice=[]
+w=[] 
 x=[]
 y=[]
 z=[]
@@ -153,6 +154,63 @@ def scale(points):
 
 
 
+
+def shear_y(points):
+
+    def shear_obj_y(points, yold, ynew, zold, znew):
+  
+        sh_y = tf.multiply(yold, ynew)
+        sh_z = tf.multiply(zold, znew)
+        
+        shear_points = tf.stack([
+                                [sh_y, 0, 0],
+                                [sh_z, 1, 0,],
+                                [0, 0, 1]
+                                ])
+        
+        shear_object = tf.matmul(tf.cast(points, tf.float32), tf.cast(shear_points, tf.float32))
+        return shear_object
+    
+    with tf.compat.v1.Session() as session:
+        w = st.sidebar.slider('Y Old', -5, 5, 1)
+        x = st.sidebar.slider('Y New', -5, 5, -2)
+        y = st.sidebar.slider('Z Old', -5, 5, 1)
+        z = st.sidebar.slider('Z New', -5, 5, 1)
+        sheared_object_y = session.run(shear_obj_y(points, w, x, y, z))
+    
+    _plt_basic_object(sheared_object_y)
+    
+    
+    
+ 
+def shear_x(points):   
+    
+    def shear_obj_x(points, yold, ynew, zold, znew):
+        
+        sh_x = tf.multiply(yold, ynew)
+        sh_z = tf.multiply(zold, znew)
+        
+        shear_points = tf.stack([
+                                [1, sh_x, 0],
+                                [0, 1, 0,],
+                                [0, sh_z, 1]
+                                ])
+        
+        shear_object = tf.matmul(tf.cast(points, tf.float32), tf.cast(shear_points, tf.float32))
+        return shear_object
+    
+    with tf.compat.v1.Session() as session:
+        w = st.sidebar.slider('Y Old', -5, 5, 1)
+        x = st.sidebar.slider('Y New', -5, 5, -2)
+        y = st.sidebar.slider('Z Old', -5, 5, 1)
+        z = st.sidebar.slider('Z New', -5, 5, 1)
+        sheared_object_x = session.run(shear_obj_x(points, w, x, y, z))
+    
+    _plt_basic_object(sheared_object_x)
+    
+    
+    
+    
             
 def main():
     
@@ -178,7 +236,21 @@ def main():
         if choice == "Scaling":
             st.subheader ('Scaled Cube: ')
             scale(points)
-   
+
+        if choice == "Shearing":
+            option = st.sidebar.selectbox('Type of Shear', ('Horizontal', 'Vertical'))
+            
+            if option == "Vertical":
+                    translate(points)
+                    st.subheader ('Sheared Cube: ')
+                    shear_y(points)
+                    
+            if option == "Horizontal":
+                    translate(points)
+                    st.subheader ('Sheared Cube: ')
+                    shear_x(points)
+        
+        
 
 if __name__ == '__main__':
     main()
