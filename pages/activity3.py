@@ -70,7 +70,7 @@ def shear(images,x, y):
 def reflection(images, flip):
     st.sidebar.write('Flip: ')    
     m_reflection_ = np.float32([[1, 0, 0],
-                                [0, flip, 0],
+                                [0, flip, 2],
                                 [0, 0, 1]])
     
     
