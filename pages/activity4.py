@@ -305,7 +305,7 @@ def main():
     
     if option == "Cube":
         choice = st.sidebar.selectbox('What form of manipulation will you use?', ('Translation', 'Rotation', 'Scaling', 'Shearing'))
-        st.write('The shape you chose is:', choice)
+        st.write('The method you chose is:', choice)
         
         _cube_(bottom_lower=(0, 0, 0), side_length=3)
         init_cube_ = _cube_(side_length=3)
@@ -338,7 +338,7 @@ def main():
     
     if option == "Pyramid":
         choice = st.sidebar.selectbox('What form of manipulation will you use?', ('Translation', 'Rotation', 'Scaling', 'Shearing'))
-        st.write('The shape you chose is:', choice)
+        st.write('The method you chose is:', choice)
         
         _pyramid_(side_length=1)
         init_pyramid_ = _pyramid_(side_length=1)
@@ -371,7 +371,7 @@ def main():
     
     if option == "Rectangle":
         choice = st.sidebar.selectbox('What form of manipulation will you use?', ('Translation', 'Rotation', 'Scaling', 'Shearing'))
-        st.write('The shape you chose is:', choice)
+        st.write('The method you chose is:', choice)
         
         _rectangle_(side_length=3)
         init_pyramid_ = _rectangle_(side_length=3)
@@ -404,7 +404,7 @@ def main():
 
     if option == "Diamond":
         choice = st.sidebar.selectbox('What form of manipulation will you use?', ('Translation', 'Rotation', 'Scaling', 'Shearing'))
-        st.write('The shape you chose is:', choice)
+        st.write('The method you chose is:', choice)
         
         _diamond_(side_length=1)
         init_pyramid_ = _diamond_(side_length=1)
