@@ -42,6 +42,11 @@ def _cube_(bottom_lower=(0, 0, 0), side_length=3):
 
 
 
+
+
+
+
+
 def _plt_basic_object(points):
     """Plots a basic object, assuming its convex and not too complex"""
     
@@ -91,7 +96,44 @@ def translate(points):
             translated_shape = session.run(translated_shape)
             _plt_basic_object(translated_shape)        
             
+
+
+
+def rotate(option, points):
+    def rotate_obj(points, angle):
+        angle = float(angle)
+        rotation_matrix = tf.stack([
+                        [tf.cos(angle), tf.sin(angle), 0],
+                        [-tf.sin(angle), tf.cos(angle), 0],
+                        [0, 0, 1]
+        ])
+
+        rotate_object = tf.matmul(tf.cast(points, tf.float32), tf.cast(rotation_matrix, tf.float32))
+        
+        return rotate_object
+        
+        
+    with tf.compat.v1.Session() as session:
             
+        if option == "Cube":
+            x = st.sidebar.slider('Angle', 0, 100, 0)
+            rotated_object = session.run(rotate_obj(init_cube_, x)) 
+            _plt_basic_object(rotated_object)
+            
+        # if option == "Pyramid":
+        #     rotated_object = session.run(rotate_obj(init_pyramid_, 75)) 
+        #     _plt_basic_object(rotated_object)
+            
+        # if option == "Rectangle":
+        #     rotated_object = session.run(rotate_obj(init_rectangle_, 75)) 
+        #     _plt_basic_object(rotated_object)
+            
+        # if option == "Diamond":
+        #     rotated_object = session.run(rotate_obj(init_diamond_, 75)) 
+        #     _plt_basic_object(rotated_object)   
+
+
+
             
 def main():
     
@@ -102,14 +144,19 @@ def main():
         option = st.sidebar.selectbox('What form of manipulation will you use?', ('Translation', 'Rotation', 'Scaling', 'Shearing'))
         st.write('The shape you chose is:', option)
         
+        _cube_(bottom_lower=(0, 0, 0), side_length=3)
+        init_cube_ = _cube_(side_length=3)
+        points = tf.constant(init_cube_, dtype=tf.float32)
+            
         if option == "Translation":
-                        
-            _cube_(bottom_lower=(0, 0, 0), side_length=3)
-            init_cube_ = _cube_(side_length=3)
-            points = tf.constant(init_cube_, dtype=tf.float32)
             st.subheader ('Translated Cube: ')
             translate(points)
             
+            
+        if option == "Rotation":
+            st.subheader ('Cube rotated 75 Degrees: ')
+            rotate(option, points)
+   
 
 if __name__ == '__main__':
     main()
