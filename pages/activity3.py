@@ -67,7 +67,6 @@ def shear(images,x, y):
     st.pyplot(fig)
 
 def reflection(images, flip):
-    load_images(images)
     st.sidebar.write('Flip: ')    
     m_reflection_ = np.float32([[1, 0, 0],
                                 [0, flip, 0],
