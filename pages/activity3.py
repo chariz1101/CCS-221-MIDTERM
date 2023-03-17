@@ -86,32 +86,32 @@ def main():
     file_upload = st.sidebar.file_uploader('Upload your files here', ['png', 'jpg', 'webp'], True)
     option = st.sidebar.selectbox('What Image Manipulation Method to perform?', ('Translation', 'Rotation', 'Scaling', 'Shearing', 'Reflection'))
     st.write('The image manipulation you chose is:', option)
-     if option == "Translation":
-        x = st.sidebar.slider('X Translation', 0.0, 100.0, 0.1)
-        y = st.sidebar.slider('Y Translation', 0.0, 100.0, 0.1)
-        st.write("Translation")
-        translation(file_upload,x,y)
+    if option == "Translation":
+       x = st.sidebar.slider('X Translation', 0.0, 100.0, 0.1)
+       y = st.sidebar.slider('Y Translation', 0.0, 100.0, 0.1)
+       st.write("Translation")
+       translation(file_upload,x,y)
         
-    if option == "Rotation":
-        st.write("Rotation")
-        rotation(file_upload, degree)
+   if option == "Rotation":
+       st.write("Rotation")
+       rotation(file_upload, degree)
         
-    if option == "Scaling":
-        scalex = st.sidebar.slider('X Coordiante: ', 0.0, 100.0, 0.1)
-        scaley = st.sidebar.slider('Y Coordinate: ', 0.0, 100.0, 0.1)
-        st.write("Scale")
-        scaling(file_upload, scalex, scaley)
+   if option == "Scaling":
+       scalex = st.sidebar.slider('X Coordiante: ', 0.0, 100.0, 0.1)
+       scaley = st.sidebar.slider('Y Coordinate: ', 0.0, 100.0, 0.1)
+       st.write("Scale")
+       scaling(file_upload, scalex, scaley)
         
-    if option == "Shearing":
-        st.write("Shear")
-        x = st.sidebar.slider('X Coordinate: ', 0.0, 100.0, 0.1)
-        y = st.sidebar.slider('Y Coordinate: ', 0.0, 100.0, 0.1)
-        shear(file_upload,x,y)
+   if option == "Shearing":
+       st.write("Shear")
+       x = st.sidebar.slider('X Coordinate: ', 0.0, 100.0, 0.1)
+       y = st.sidebar.slider('Y Coordinate: ', 0.0, 100.0, 0.1)
+       shear(file_upload,x,y)
         
-    if option == "Reflection":
-        flip = st.sidebar.slider('X Translation', -1, 1, 1)
-        st.write("Reflection")
-        reflection(file_upload, flip)
+   if option == "Reflection":
+       flip = st.sidebar.slider('X Translation', -1, 1, 1)
+       st.write("Reflection")
+       reflection(file_upload, flip)
     
 if __name__ == '__main__':
     main()
