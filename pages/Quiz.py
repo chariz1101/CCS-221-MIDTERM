@@ -54,35 +54,36 @@ def translation_new(images, Bx_new,By_new):
 def main () :
  
     st.title ("This is Quiz 1: Image Translation Method ")
+    st.write ("Upload Image first, then the Manipulation will appear.")
     filesUpload = st.sidebar.file_uploader('Upload image to manipulate: ', ['png', 'jpg', 'webp'], False)
-    
-    Bx_old = st.sidebar.slider(
-        'Initial X',
-        0, 100)
+    if filesUpload is not None:
+        Bx_old = st.sidebar.slider(
+            'Initial X',
+            0, 100)
 
 
-    By_old = st.sidebar.slider(
-        'Initial Y',
-        0, 100)
+        By_old = st.sidebar.slider(
+            'Initial Y',
+            0, 100)
 
 
-    Tx = st.sidebar.slider(
-        'Added X',
-        0, 300)
+        Tx = st.sidebar.slider(
+            'Added X',
+            0, 300)
 
 
-    Ty = st.sidebar.slider(
-        'Added Y',
-        0, 300)
+        Ty = st.sidebar.slider(
+            'Added Y',
+            0, 300)
 
 
-    Bx_new = Bx_old + Tx
-    By_new = By_old + Ty
-    
-    st.write('Original')
-    translation(filesUpload, Bx_old, By_old)
-    st.write('Translated')
-    translation_new(filesUpload, Bx_new, By_new)
+        Bx_new = Bx_old + Tx
+        By_new = By_old + Ty
+
+        st.write('Original')
+        translation(filesUpload, Bx_old, By_old)
+        st.write('Translated')
+        translation_new(filesUpload, Bx_new, By_new)
 
     
 if __name__ == '__main__':
