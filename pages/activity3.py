@@ -101,34 +101,35 @@ def reflection(images):
 def main():
     st.title ("This is Activity 3: Image Manipulation Methods ")
     filesUpload = st.sidebar.file_uploader('Upload image to manipulate: ', ['png', 'jpg', 'webp'], False)
-    option = st.sidebar.selectbox('What Image Manipulation Method to perform?', ('Translation', 'Rotation', 'Scaling', 'Shearing', 'Reflection'))
-    st.write('The image manipulation you chose is:', option)
-    
-    if option == "Translation":
-       x = st.sidebar.slider('X Translation', 0.0, 300.0, 0.1)
-       y = st.sidebar.slider('Y Translation', 0.0, 300.0, 0.1)
-       translation(filesUpload, x, y)
-        
-    if option == "Rotation":
-        angle = st.sidebar.slider('Rotation Degrees', -90.0, 90.0, 0.1)
-        st.write("Rotation")
-        rotation(filesUpload, angle)
-         
-    if option == "Scaling":
-        scalex = st.sidebar.slider('X Coordiante: ', 0.0, 10.0, 0.1)
-        scaley = st.sidebar.slider('Y Coordinate: ', 0.0, 10.0, 0.1)
-        st.write("Scale")
-        scaling(filesUpload, scalex, scaley)
-        
-    if option == "Shearing":
-        st.write("Shear")
-        x = st.sidebar.slider('X Coordinate: ', 0.0, 10.0, 0.1)
-        y = st.sidebar.slider('Y Coordinate: ', 0.0, 10.0, 0.1)
-        shear(filesUpload,x,y)
-        
-    if option == "Reflection":
-        st.write("Reflection")
-        reflection(filesUpload)
+    if filesUpload is not None:
+        option = st.sidebar.selectbox('What Image Manipulation Method to perform?', ('Translation', 'Rotation', 'Scaling', 'Shearing', 'Reflection'))
+        st.write('The image manipulation you chose is:', option)
+
+        if option == "Translation":
+           x = st.sidebar.slider('X Translation', 0.0, 300.0, 0.1)
+           y = st.sidebar.slider('Y Translation', 0.0, 300.0, 0.1)
+           translation(filesUpload, x, y)
+
+        if option == "Rotation":
+            angle = st.sidebar.slider('Rotation Degrees', -90.0, 90.0, 0.1)
+            st.write("Rotation")
+            rotation(filesUpload, angle)
+
+        if option == "Scaling":
+            scalex = st.sidebar.slider('X Coordiante: ', 0.0, 10.0, 0.1)
+            scaley = st.sidebar.slider('Y Coordinate: ', 0.0, 10.0, 0.1)
+            st.write("Scale")
+            scaling(filesUpload, scalex, scaley)
+
+        if option == "Shearing":
+            st.write("Shear")
+            x = st.sidebar.slider('X Coordinate: ', 0.0, 10.0, 0.1)
+            y = st.sidebar.slider('Y Coordinate: ', 0.0, 10.0, 0.1)
+            shear(filesUpload,x,y)
+
+        if option == "Reflection":
+            st.write("Reflection")
+            reflection(filesUpload)
 
 if __name__ == '__main__':
     main()
