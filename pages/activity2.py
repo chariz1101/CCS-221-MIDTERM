@@ -6,10 +6,10 @@ two_d_arr = np.array([[1, 0, 1],
                       [1, 0, 1],
                       [0, 1, 0]])
 
-def flood_fill(x, y, num_boxes, replace_color, boundary_color):
+def flood_fill(num_boxes, replace_color, boundary_color):
     rows, cols = two_d_arr.shape
     visited = set()
-    stack = [(x, y)]
+    stack = [(0, 0)]  # Start flood fill from the top-left corner
 
     while stack and num_boxes > 0:
         current_x, current_y = stack.pop()
@@ -39,7 +39,7 @@ def flood_fill(x, y, num_boxes, replace_color, boundary_color):
                     stack.append((neighbor_x, neighbor_y))
 
 def main():
-    st.title("This is Activity 2 and Flood Fill")
+    st.title("This is Activity 2")
 
     activity_choice = st.sidebar.selectbox(
         "Select an activity",
@@ -62,18 +62,12 @@ def main():
                     two_d_arr[i, j] = replace
 
     elif activity_choice == "Flood Fill":
-        x = st.sidebar.slider('y', 0, 2, 1)
-        st.write('Value of X:', x)
-
-        y = st.sidebar.slider('x', 0, 2, 1)
-        st.write('Value of Y:', y)
-
         num_boxes = st.sidebar.slider('Number of Boxes', 1, 9, 1)
         replace = st.sidebar.slider('Color', 0, 1000, 500)
         st.write('Number of Boxes:', num_boxes)
         st.write('Color:', replace)
 
-        flood_fill(x, y, num_boxes, replace, two_d_arr[x, y])
+        flood_fill(num_boxes, replace, two_d_arr[0, 0])  # Start flood fill from the top-left corner
 
     fig = plt.figure()
     img = plt.imshow(two_d_arr, cmap='rainbow', interpolation='none')
