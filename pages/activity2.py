@@ -45,7 +45,7 @@ def main():
 
     selected_color = replace
 
-    unselected_color = st.sidebar.slider('Flood Fill Color', 0, 1000, 0)
+    unselected_color = st.sidebar.slider('Flood Fill Color', 0, 1000, 1)
     st.write('Flood Fill Color:', unselected_color)
 
     fill(x, y, replace, selected_color, unselected_color)
