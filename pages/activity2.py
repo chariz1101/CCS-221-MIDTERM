@@ -39,13 +39,13 @@ def main():
 
     y = st.sidebar.slider('x', 0, 2, 1)
     st.write('Value of Y:', y)
-    
-    selected_color = replace
 
     replace = st.sidebar.slider('Boundary Fill Color', 0, 1000, 500)
-    st.write('Boundary Fill Color:', selected_color)
+    st.write('Boundary Fill Color:', replace)
 
-    unselected_color = st.sidebar.slider('Flood Fill Color', 0, 1000, 1)
+    selected_color = replace
+
+    unselected_color = st.sidebar.slider('Flood Fill Color', 0, 1000, 0)
     st.write('Flood Fill Color:', unselected_color)
 
     fill(x, y, replace, selected_color, unselected_color)
