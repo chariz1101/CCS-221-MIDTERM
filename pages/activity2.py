@@ -6,8 +6,8 @@ two_d_arr = np.array([[1, 0, 1],
                       [1, 0, 1],
                       [0, 1, 0]])
 
-selected_color = 0
-unselected_color = 0
+selected_color = []
+unselected_color = []
 
 
 def fill(x, y, selected_color, unselected_color):
