@@ -64,7 +64,7 @@ def main():
         ("Boundary Fill", "Flood Fill")
     )
     
-    if activity_choice == "Activity 2":
+    if activity_choice == "Boundary Fill":
         x = st.sidebar.slider('y', 0, 2, 1)
         st.write('Value of X:', x)
         
