@@ -37,25 +37,25 @@ def flood_fill(x, y, replace, boundary_color):
                 ):
                     stack.append((neighbor_x, neighbor_y))
 
-def fill_one_box(replace):
+def move_box(x, y, new_x, new_y):
     rows, cols = two_d_arr.shape
 
-    for x in range(rows):
-        for y in range(cols):
-            if two_d_arr[x, y] == 0:
-                boundary_color = two_d_arr[x, y]  # Get the current color at (x, y)
-                flood_fill(x, y, replace, boundary_color)
-                return  # Fill only one box at a time
+    if 0 <= x < rows and 0 <= y < cols:
+        value = two_d_arr[x, y]
+        two_d_arr[x, y] = 0
+
+        if 0 <= new_x < rows and 0 <= new_y < cols:
+            two_d_arr[new_x, new_y] = value
 
 def main():
-    st.title("This is Activity 2 and Flood Fill")
+    st.title("This is Activity 2")
 
     activity_choice = st.sidebar.selectbox(
         "Select an activity",
-        ("Activity 2", "Flood Fill")
+        ("Boundary Fill", "Flood Fill")
     )
 
-    if activity_choice == "Activity 2":
+    if activity_choice == "Boundary Fill":
         x = st.sidebar.slider('y', 0, 2, 1)
         st.write('Value of X:', x)
 
@@ -74,15 +74,21 @@ def main():
         replace = st.sidebar.slider('replace', 0, 1000, 500)
         st.write('replace:', replace)
 
-        fill_one_box(replace)
+        x = st.sidebar.slider('box x', 0, 2, 1)
+        st.write('Box X:', x)
+
+        y = st.sidebar.slider('box y', 0, 2, 1)
+        st.write('Box Y:', y)
+
+        new_x = st.sidebar.slider('new x', 0, 2, 1)
+        st.write('New X:', new_x)
+
+        new_y = st.sidebar.slider('new y', 0, 2, 1)
+        st.write('New Y:', new_y)
+
+        move_box(x, y, new_x, new_y)
+        flood_fill(new_x, new_y, replace, two_d_arr[new_x, new_y])
 
     fig = plt.figure()
     img = plt.imshow(two_d_arr, cmap='rainbow', interpolation='none')
-    img.set_clim([1, 1000])
-    plt.colorbar()
-    plt.show()
-    st.pyplot(fig)
-
-
-if __name__ == '__main__':
-    main()
+    img.set_clim([
