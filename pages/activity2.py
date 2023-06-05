@@ -76,7 +76,7 @@ def main():
 
         fill_one_box(replace)
 
-    fig = plt.figure()
+    fig = plt.figure(figsize=(6, 6))  # Increase the figure size
     img = plt.imshow(two_d_arr, cmap='rainbow', interpolation='none')
     img.set_clim([1, 1000])
     plt.colorbar()
