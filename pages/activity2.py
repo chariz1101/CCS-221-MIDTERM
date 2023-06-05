@@ -6,17 +6,17 @@ two_d_arr = np.array([[1, 0, 1],
                       [1, 0, 1],
                       [0, 1, 0]])
 
-selected_color = []
-unselected_color = []
+selected_color = 0
+unselected_color = 0
 
 
-def fill(x, y, selected_color, unselected_color):
+def fill(x, y, replace, selected_color, unselected_color):
     global two_d_arr
 
     for i in range(len(two_d_arr)):
         for j in range(len(two_d_arr[i])):
             if i == x and j == y:
-                two_d_arr[x][y] = selected_color
+                two_d_arr[x][y] = replace
             else:
                 two_d_arr[i][j] = unselected_color
 
@@ -39,6 +39,8 @@ def main():
 
     y = st.sidebar.slider('x', 0, 2, 1)
     st.write('Value of Y:', y)
+    
+    selected_color = replace
 
     replace = st.sidebar.slider('Boundary Fill Color', 0, 1000, 500)
     st.write('Boundary Fill Color:', selected_color)
@@ -46,7 +48,7 @@ def main():
     unselected_color = st.sidebar.slider('Flood Fill Color', 0, 1000, 1)
     st.write('Flood Fill Color:', unselected_color)
 
-    fill(x, y, selected_color, unselected_color)
+    fill(x, y, replace, selected_color, unselected_color)
 
 
 if __name__ == '__main__':
