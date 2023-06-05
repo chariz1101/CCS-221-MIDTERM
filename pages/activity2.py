@@ -37,7 +37,7 @@ def flood_fill(x, y, replace, boundary_color):
                 ):
                     stack.append((neighbor_x, neighbor_y))
 
-def fill_one_box(replace):
+def fill_one_box(replace, movement):
     rows, cols = two_d_arr.shape
 
     for x in range(rows):
@@ -45,6 +45,18 @@ def fill_one_box(replace):
             if two_d_arr[x, y] == 0:
                 boundary_color = two_d_arr[x, y]  # Get the current color at (x, y)
                 flood_fill(x, y, replace, boundary_color)
+                if movement > 0:
+                    fig = plt.figure()
+                    img = plt.imshow(two_d_arr, cmap='rainbow', interpolation='none')
+                    img.set_clim([1, 1000])
+                    plt.colorbar()
+                    plt.show()
+                    st.pyplot(fig)
+                    plt.close(fig)
+                    st.write('Moving...')
+                    st.empty().update()
+                    st.sleep(1)  # Adjust the delay as needed
+                    movement -= 1
 
 def main():
     st.title("This is Activity 2 and Flood Fill")
@@ -73,7 +85,10 @@ def main():
         replace = st.sidebar.slider('replace', 0, 1000, 500)
         st.write('replace:', replace)
 
-        fill_one_box(replace)
+        movement = st.sidebar.slider('movement', 0, 10, 5)
+        st.write('movement:', movement)
+
+        fill_one_box(replace, movement)
 
     fig = plt.figure()
     img = plt.imshow(two_d_arr, cmap='rainbow', interpolation='none')
@@ -85,3 +100,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
