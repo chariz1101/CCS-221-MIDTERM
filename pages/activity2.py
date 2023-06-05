@@ -37,16 +37,21 @@ def flood_fill(x, y, replace, boundary_color):
                 ):
                     stack.append((neighbor_x, neighbor_y))
 
-def fill_one_box(replace, movement):
+def fill_cross(replace):
     rows, cols = two_d_arr.shape
+    center_x, center_y = rows // 2, cols // 2
 
-    for _ in range(movement):
-        x, y = np.where(two_d_arr == 0)  # Get the indices of all empty boxes
-        if len(x) > 0 and len(y) > 0:
-            index = np.random.choice(len(x))  # Randomly select a box
-            box_x, box_y = x[index], y[index]
-            boundary_color = two_d_arr[box_x, box_y]  # Get the current color at (x, y)
-            flood_fill(box_x, box_y, replace, boundary_color)
+    # Fill the vertical line of the cross
+    for x in range(rows):
+        if x != center_x:
+            boundary_color = two_d_arr[x, center_y]  # Get the current color at (x, center_y)
+            flood_fill(x, center_y, replace, boundary_color)
+
+    # Fill the horizontal line of the cross
+    for y in range(cols):
+        if y != center_y:
+            boundary_color = two_d_arr[center_x, y]  # Get the current color at (center_x, y)
+            flood_fill(center_x, y, replace, boundary_color)
 
 def main():
     st.title("This is Activity 2 and Flood Fill")
@@ -75,10 +80,7 @@ def main():
         replace = st.sidebar.slider('replace', 0, 1000, 500)
         st.write('replace:', replace)
 
-        movement = st.sidebar.slider('movement', 1, 9, 1)
-        st.write('movement:', movement)
-
-        fill_one_box(replace, movement)
+        fill_cross(replace)
 
     fig = plt.figure()
     img = plt.imshow(two_d_arr, cmap='rainbow', interpolation='none')
