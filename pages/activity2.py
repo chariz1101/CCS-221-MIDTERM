@@ -91,4 +91,3 @@ def main():
 
     fig = plt.figure()
     img = plt.imshow(two_d_arr, cmap='rainbow', interpolation='none')
-    img.set_clim([
