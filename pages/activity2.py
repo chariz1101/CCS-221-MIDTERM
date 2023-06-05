@@ -10,7 +10,7 @@ selected_color = 0
 unselected_color = 0
 
 
-def fill(x, y, replace, unselected_color):
+def fill(x, y, replace, selected_color, unselected_color):
     global two_d_arr
 
     for i in range(len(two_d_arr)):
