@@ -38,15 +38,18 @@ def flood_fill(num_boxes, replace_color, boundary_color):
                 ):
                     stack.append((neighbor_x, neighbor_y))
 
+    if num_boxes > 0:
+        st.write("Cannot fill all boxes. Please decrease the number of boxes.")
+
 def main():
-    st.title("This is Activity 2")
+    st.title("This is Activity 2 and Flood Fill")
 
     activity_choice = st.sidebar.selectbox(
         "Select an activity",
-        ("Boundary Fill", "Flood Fill")
+        ("Activity 2", "Flood Fill")
     )
 
-    if activity_choice == "Boundary Fill":
+    if activity_choice == "Activity 2":
         x = st.sidebar.slider('y', 0, 2, 1)
         st.write('Value of X:', x)
 
