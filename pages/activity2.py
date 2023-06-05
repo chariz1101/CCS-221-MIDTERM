@@ -45,7 +45,6 @@ def fill_one_box(replace):
             if two_d_arr[x, y] == 0:
                 boundary_color = two_d_arr[x, y]  # Get the current color at (x, y)
                 flood_fill(x, y, replace, boundary_color)
-                return  # Fill only one box at a time
 
 def main():
     st.title("This is Activity 2 and Flood Fill")
@@ -76,7 +75,7 @@ def main():
 
         fill_one_box(replace)
 
-    fig = plt.figure(figsize=(6, 6))  # Increase the figure size
+    fig = plt.figure()
     img = plt.imshow(two_d_arr, cmap='rainbow', interpolation='none')
     img.set_clim([1, 1000])
     plt.colorbar()
