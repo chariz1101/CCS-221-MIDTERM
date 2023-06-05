@@ -42,10 +42,10 @@ def main():
     
     activity_choice = st.sidebar.selectbox(
         "Select an activity",
-        ("Boundary Fill", "Flood Fill")
+        ("Activity 2", "Flood Fill")
     )
     
-    if activity_choice == "Boundary Fill":
+    if activity_choice == "Activity 2":
         x = st.sidebar.slider('y', 0, 2, 1)
         st.write('Value of X:', x)
         
@@ -61,12 +61,14 @@ def main():
                     two_d_arr[i, j] = replace
 
     elif activity_choice == "Flood Fill":
-        replace = st.sidebar.slider('replace', 0, 1000, 500)
-        
+        num_boxes = st.sidebar.slider('Number of boxes to fill', 1, 9, 1)
+        replace = np.linspace(1, 1000, num_boxes, dtype=int)
+
         for x in range(3):
             for y in range(3):
                 boundary_color = two_d_arr[x, y]  # Get the current color at (x, y)
-                flood_fill(x, y, replace, boundary_color)
+                if x * 3 + y < num_boxes:
+                    flood_fill(x, y, replace[x * 3 + y], boundary_color)
 
     fig = plt.figure()
     img = plt.imshow(two_d_arr, cmap='rainbow', interpolation='none')
