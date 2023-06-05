@@ -57,11 +57,11 @@ def fill(x, y, replace):
     st.pyplot(fig)
 
 def main():
-    st.title("This is Activity 2 and Flood Fill")
+    st.title("This is Activity 2")
     
     activity_choice = st.sidebar.selectbox(
         "Select an activity",
-        ("Activity 2", "Flood Fill")
+        ("Boundary Fill", "Flood Fill")
     )
     
     if activity_choice == "Activity 2":
