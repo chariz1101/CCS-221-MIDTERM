@@ -37,13 +37,15 @@ def flood_fill(x, y, replace, boundary_color):
                 ):
                     stack.append((neighbor_x, neighbor_y))
 
-def fill_all_boxes(replace):
+def fill_one_box(replace):
     rows, cols = two_d_arr.shape
 
     for x in range(rows):
         for y in range(cols):
-            boundary_color = two_d_arr[x, y]  # Get the current color at (x, y)
-            flood_fill(x, y, replace, boundary_color)
+            if two_d_arr[x, y] == 0:
+                boundary_color = two_d_arr[x, y]  # Get the current color at (x, y)
+                flood_fill(x, y, replace, boundary_color)
+                return  # Fill only one box at a time
 
 def main():
     st.title("This is Activity 2 and Flood Fill")
@@ -72,7 +74,7 @@ def main():
         replace = st.sidebar.slider('replace', 0, 1000, 500)
         st.write('replace:', replace)
 
-        fill_all_boxes(replace)
+        fill_one_box(replace)
 
     fig = plt.figure()
     img = plt.imshow(two_d_arr, cmap='rainbow', interpolation='none')
