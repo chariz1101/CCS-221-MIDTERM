@@ -6,12 +6,12 @@ two_d_arr = np.array([[1, 0, 1],
                       [1, 0, 1],
                       [0, 1, 0]])
 
-def flood_fill(num_boxes, replace_color, boundary_color):
+def flood_fill(x, y, replace, boundary_color):
     rows, cols = two_d_arr.shape
     visited = set()
-    stack = [(0, 0)]  # Start flood fill from the top-left corner
+    stack = [(x, y)]
 
-    while stack and num_boxes > 0:
+    while stack:
         current_x, current_y = stack.pop()
 
         if (current_x, current_y) in visited:
@@ -20,8 +20,7 @@ def flood_fill(num_boxes, replace_color, boundary_color):
         visited.add((current_x, current_y))
 
         if two_d_arr[current_x, current_y] == boundary_color:
-            two_d_arr[current_x, current_y] = replace_color
-            num_boxes -= 1
+            two_d_arr[current_x, current_y] = replace
 
             neighbors = [
                 (current_x - 1, current_y),
@@ -38,8 +37,13 @@ def flood_fill(num_boxes, replace_color, boundary_color):
                 ):
                     stack.append((neighbor_x, neighbor_y))
 
-    if num_boxes > 0:
-        st.write("Cannot fill all boxes. Please decrease the number of boxes.")
+def fill_all_boxes(replace):
+    rows, cols = two_d_arr.shape
+
+    for x in range(rows):
+        for y in range(cols):
+            boundary_color = two_d_arr[x, y]  # Get the current color at (x, y)
+            flood_fill(x, y, replace, boundary_color)
 
 def main():
     st.title("This is Activity 2 and Flood Fill")
@@ -65,12 +69,10 @@ def main():
                     two_d_arr[i, j] = replace
 
     elif activity_choice == "Flood Fill":
-        num_boxes = st.sidebar.slider('Number of Boxes', 1, 9, 1)
-        replace = st.sidebar.slider('Color', 0, 1000, 500)
-        st.write('Number of Boxes:', num_boxes)
-        st.write('Color:', replace)
+        replace = st.sidebar.slider('replace', 0, 1000, 500)
+        st.write('replace:', replace)
 
-        flood_fill(num_boxes, replace, two_d_arr[0, 0])  # Start flood fill from the top-left corner
+        fill_all_boxes(replace)
 
     fig = plt.figure()
     img = plt.imshow(two_d_arr, cmap='rainbow', interpolation='none')
