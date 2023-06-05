@@ -1,47 +1,55 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import streamlit as st
-import altair as alt
 
 two_d_arr = np.array([[1, 0, 1],
                       [1, 0, 1],
                       [0, 1, 0]])
-    
-x = []
-y = []
-replace = []
-    
-def fill(x, y, replace):
-    
+
+selected_color = 0
+unselected_color = 0
+
+
+def fill(x, y, replace, selected_color, unselected_color):
+    global two_d_arr
+
     for i in range(len(two_d_arr)):
         for j in range(len(two_d_arr[i])):
-            two_d_arr[x][y] = replace
-    
-    fig = plt.figure ()
+            if i == x and j == y:
+                two_d_arr[x][y] = replace
+            else:
+                two_d_arr[i][j] = unselected_color
+
+    fig = plt.figure()
     img = plt.imshow(two_d_arr, cmap='rainbow', interpolation='none')
-    img.set_clim([1,1000])
+    img.set_clim([1, 1000])
     plt.colorbar()
     plt.show()
-    st.pyplot (fig)
-    
+    st.pyplot(fig)
 
-    
+
 def main():
-   st.title("This is Activity 2")
+    global selected_color
+    global unselected_color
 
-   x = st.sidebar.slider('y',0, 2, 1)
-   st.write('Value of X:', x)
-    
-   y = st.sidebar.slider('x',0, 2, 1)
-   st.write('Value of Y:', y)
-    
-   replace = st.sidebar.slider('color',0, 1000, 500)
-   st.write('color:', replace)
-    
-   fill(x, y, replace)
+    st.title("This is Activity 2")
 
-  
-  
-  
+    x = st.sidebar.slider('y', 0, 2, 1)
+    st.write('Value of X:', x)
+
+    y = st.sidebar.slider('x', 0, 2, 1)
+    st.write('Value of Y:', y)
+
+    replace = st.sidebar.slider('Selected Box Color', 0, 1000, 500)
+    st.write('Selected Box Color:', replace)
+
+    selected_color = replace
+
+    unselected_color = st.sidebar.slider('Unselected Boxes Color', 0, 1000, 0)
+    st.write('Unselected Boxes Color:', unselected_color)
+
+    fill(x, y, replace, selected_color, unselected_color)
+
+
 if __name__ == '__main__':
-  main() 
+    main()
