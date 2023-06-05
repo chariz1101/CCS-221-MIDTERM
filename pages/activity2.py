@@ -10,7 +10,7 @@ selected_color = 0
 unselected_color = 0
 
 
-def fill(x, y, replace, selected_color, unselected_color):
+def fill(x, y, replace, unselected_color):
     global two_d_arr
 
     for i in range(len(two_d_arr)):
@@ -40,13 +40,13 @@ def main():
     y = st.sidebar.slider('x', 0, 2, 1)
     st.write('Value of Y:', y)
 
-    replace = st.sidebar.slider('Selected Box Color', 0, 1000, 500)
-    st.write('Selected Box Color:', replace)
+    replace = st.sidebar.slider('Boundary Fill Color', 0, 1000, 500)
+    st.write('Boundary Fill Color:', replace)
 
     selected_color = replace
 
-    unselected_color = st.sidebar.slider('Unselected Boxes Color', 0, 1000, 0)
-    st.write('Unselected Boxes Color:', unselected_color)
+    unselected_color = st.sidebar.slider('Flood Fill Color', 0, 1000, 0)
+    st.write('Flood Fill Color:', unselected_color)
 
     fill(x, y, replace, selected_color, unselected_color)
 
